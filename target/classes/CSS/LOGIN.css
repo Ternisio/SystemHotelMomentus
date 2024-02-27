@@ -1,0 +1,87 @@
+.text{
+-fx-text-fill: white;
+-fx-prompt-text-fill: white;
+
+}
+.DatePicker{
+ -fx-font : 20px "Leelawadee UI";
+}
+.bg-white{
+-fx-background-color: #FFFFFF;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+
+}
+.bg-red{
+-fx-background-color: #f04848;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+
+}
+.bg-white{
+-fx-background-color: #FFFFFF;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+-fx-background-radius: 8px;
+}
+
+.bg-white:hover{
+-fx-background-color: #FFFFFF;
+-fx-effect: dropshadow(three-pass-box, rgba(255, 0, 43,0.3), 8,0,0,0);
+-fx-background-radius: 8px;
+}
+
+.bg-wh{
+-fx-background-color: #a7abb0;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+-fx-background-radius: 8px;
+}
+.card1{
+-fx-background-color: linear-gradient(to right, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+-fx-background-radius: 8px;
+}
+.card2{
+-fx-background-color: linear-gradient(to right,  #cb2d3e, #ef473a);
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+-fx-background-radius: 8px;
+}
+.card3{
+-fx-background-color: linear-gradient(to left, #6a9113, #141517);
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+-fx-background-radius: 8px;
+}
+.add-textflied{
+-fx-background-color: #fff;
+-fx-background-radius: 0px 5px 0px 0px;
+-fx-border-color: #1e242e;
+-fx-border-radius: 0px 5px 0px 0px;
+}
+.add-textflied:focused{
+-fx-border-color: #f04848;
+}
+.pesquisar{
+-fx-background-color: #fff;
+-fx-background-radius: 0px 10px 0px 0px;
+-fx-border-color: #1e242e;
+-fx-border-radius: 0px 10px 0px 0px;
+-fx-padding: 0px 0px 0px 45px;
+-fx-font-size: 15px
+}
+.pesquisar:focused{
+-fx-border-color: #f04848;
+}
+.btn{
+-fx-background-color:  linear-gradient(to left, #6441a5, #2a0845);
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+-fx-background-radius: 8px;
+}
+
+
+
+.close{
+-fx-background-color: linear-gradient(to left, #6441a5, #2a0845);
+-fx-background-radius: 8px;
+}
+.close:hover{
+-fx-background-color: black;
+-fx-text-fill: red;
+
+}

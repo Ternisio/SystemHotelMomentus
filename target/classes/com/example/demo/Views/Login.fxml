@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.gleidson28.GNAvatarView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.ControllerLogin">
+   <children>
+      <BorderPane prefHeight="720.0" prefWidth="1024.0">
+         <left>
+            <AnchorPane prefHeight="720.0" prefWidth="503.0" style="-fx-background-color: #9c0909;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="546.0" fitWidth="443.0" layoutX="25.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Imagens/Sem Titulo-1-Recuperado.png" />
+                     </image></ImageView>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="720.0" prefWidth="522.0" style="-fx-background-color: #FFF;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="Tela_Fazer_login" alignment="CENTER" layoutX="2.0" layoutY="-1.0" prefHeight="721.0" prefWidth="518.0" spacing="30.0">
+                     <children>
+                        <Label text="Login" textFill="#bf3f3f">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="53.0" />
+                           </font>
+                        </Label>
+                        <GNAvatarView fx:id="Foto" prefHeight="191.0" prefWidth="430.0" stroke="#f77777" type="CIRCLE">
+                           <image>
+                              <Image url="@../../../../Imagens/user.png" />
+                           </image>
+                        </GNAvatarView>
+                        <Label fx:id="Lbl_error" alignment="CENTER" maxWidth="312.0" prefHeight="22.0" prefWidth="312.0" textFill="#e10000">
+                           <font>
+                              <Font name="Leelawadee UI" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="518.0">
+                           <children>
+                              <TextField fx:id="txt_nome" onKeyPressed="#Entrar_login" onKeyReleased="#MostrandoAfoto" prefHeight="48.0" prefWidth="256.0" promptText="Nome" style="-fx-background-color: #bf3f3f; -fx-border-color: #ff6565; -fx-border-radius: 5;" styleClass="text" stylesheets="@../../../../CSS/LOGIN.css">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="21.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="518.0">
+                           <children>
+                              <PasswordField fx:id="Senha" onKeyPressed="#Entrar_login" onKeyReleased="#DigitandoaSenha" prefHeight="48.0" prefWidth="256.0" promptText="Senha" style="-fx-background-color: #bf3f3f; -fx-border-color: #ff6565; -fx-border-radius: 5;" styleClass="text" stylesheets="@../../../../CSS/LOGIN.css">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="30.0" prefWidth="503.0">
+                           <children>
+                              <Label onMouseClicked="#clica_esqueceu_senha" text="Esqueceu a senha ?" textFill="#1008a4" underline="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Leelawadee UI" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="130.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="518.0" spacing="20.0">
+                           <children>
+                              <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#ButtonLogin" style="-fx-background-color: #bf3f3f;" text="Entrar" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="21.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../../../../Imagens/enter.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #ff6565;" text="Sair" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="21.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../../../../Imagens/remover.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="Tela_CPF" alignment="CENTER" layoutX="1.0" layoutY="-2.0" prefHeight="721.0" prefWidth="518.0" spacing="15.0" visible="false">
+                     <children>
+                        <Label text="Recuperação a senha" textFill="#bf3f3f">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="38.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Lbl_error_cpf" alignment="CENTER" maxWidth="312.0" prefHeight="22.0" prefWidth="312.0" textFill="#e10000">
+                           <font>
+                              <Font name="Leelawadee UI" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="518.0">
+                           <children>
+                              <TextField fx:id="txt_CPF" onKeyPressed="#apertar_verificarCPF" onKeyReleased="#DigitandooCPF" prefHeight="48.0" prefWidth="256.0" promptText="Seu cpf" style="-fx-background-color: #bf3f3f; -fx-border-color: #ff6565; -fx-border-radius: 5;" styleClass="text" stylesheets="@../../../../CSS/LOGIN.css">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="21.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="518.0" spacing="20.0">
+                           <children>
+                              <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Verificar_cpf" style="-fx-background-color: #bf3f3f;" text="Verificar" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="21.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../../../../Imagens/verifica.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#clica_botao_voltar_Tela_Cpf" styleClass="card1" stylesheets="@../../../../CSS/LOGIN.css" text="Voltar" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="21.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../../../../Imagens/botao-voltar-branco.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="Tela_Nova_senha" alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="721.0" prefWidth="518.0" spacing="30.0" visible="false">
+                     <children>
+                        <Label text="Recuperação a senha" textFill="#bf3f3f">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="38.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Lbl_error_Senha" alignment="CENTER" maxWidth="312.0" prefHeight="22.0" prefWidth="312.0" textFill="#e10000">
+                           <font>
+                              <Font name="Leelawadee UI" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="518.0">
+                           <children>
+                              <PasswordField fx:id="Nova_senha" onKeyPressed="#apertar_alterarasenha" onKeyReleased="#DigitandoaNovaSenha" prefHeight="48.0" prefWidth="256.0" promptText="Nova senha" style="-fx-background-color: #bf3f3f; -fx-border-color: #ff6565; -fx-border-radius: 5;" styleClass="text" stylesheets="@../../../../CSS/LOGIN.css">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="518.0">
+                           <children>
+                              <PasswordField fx:id="Nova_senha_novamente" onKeyPressed="#apertar_alterarasenha" onKeyReleased="#DigitandoaNovaSenha" prefHeight="48.0" prefWidth="256.0" promptText="Digite novamente" style="-fx-background-color: #bf3f3f; -fx-border-color: #ff6565; -fx-border-radius: 5;" styleClass="text" stylesheets="@../../../../CSS/LOGIN.css">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="518.0" spacing="20.0">
+                           <children>
+                              <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#alterar_senha" style="-fx-background-color: #bf3f3f;" text="Alterar a senha" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="21.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../../../../Imagens/verifica.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#clica_botao_voltar_Tela_Nova_senha" styleClass="card1" stylesheets="@../../../../CSS/LOGIN.css" text="Voltar ao login" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Leelawadee UI" size="21.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../../../../Imagens/botao-voltar-branco.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

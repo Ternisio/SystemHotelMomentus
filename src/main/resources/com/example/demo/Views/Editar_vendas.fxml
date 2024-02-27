@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, #000000, #e74c3c);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.ControllerEditar_venda">
+   <children>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Data e hora da entrada:" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Txt_Data_Hora_Entrada" disable="true" prefHeight="26.0" prefWidth="110.0" />
+            <Label text="Número do quarto:" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="ComboBox_Num_Quarto" onAction="#ComboboxNum" prefHeight="26.0" prefWidth="146.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Data e hora da saida:" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Txt_Data_Hora_Saida" disable="true" prefHeight="26.0" prefWidth="110.0" />
+            <Label text="Estado:" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="ComboBox_Data_Hora_Estado" onAction="#ComboboxEstado" prefHeight="26.0" prefWidth="107.0" />
+            <Label fx:id="lbl_Duracao_Venda" alignment="CENTER" contentDisplay="CENTER" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Leelawadee UI" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="197.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="197.0" prefWidth="211.0" spacing="10.0">
+               <children>
+                  <Button fx:id="btn_add_consumo" mnemonicParsing="false" onAction="#add_consumo" styleClass="card1" stylesheets="@../../../../CSS/LOGIN.css" text="Adicionar" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btn_Editar_consumo" disable="true" mnemonicParsing="false" onAction="#Editar_consumo" prefWidth="78.4" styleClass="card3" stylesheets="@../../../../CSS/LOGIN.css" text="Editar" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btn_Excluir_consumo" disable="true" mnemonicParsing="false" onAction="#Excluir" prefWidth="78.4" styleClass="btn" stylesheets="@../../../../CSS/LOGIN.css" text="Excluir" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <CheckBox fx:id="check_add" mnemonicParsing="false" onAction="#CheckboxAdd" text="Adicionar consumo" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="Leelawadee UI" size="14.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="183.0" prefWidth="324.0" spacing="5.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="272.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Lista de consumo:" textFill="WHITE">
+                           <font>
+                              <Font name="Leelawadee UI" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="Tabela_Consumo_venda" onMouseClicked="#SelecionadaTabela" prefHeight="200.0" prefWidth="279.0">
+                    <columns>
+                        <TableColumn fx:id="Coluna_Cod_Produto" prefWidth="126.4000244140625" text="Codigo" visible="false" />
+                      <TableColumn fx:id="Coluna_Nome_Produto_venda" prefWidth="126.4000244140625" text="Nome" />
+                      <TableColumn fx:id="Coluna_Valor_Produto_venda" prefWidth="89.5999755859375" text="Valor" />
+                        <TableColumn fx:id="Coluna_QTS_Produto_Venda" prefWidth="89.5999755859375" text="Quantidades" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="81.0" prefWidth="600.0" styleClass="card1">
+         <children>
+            <Button mnemonicParsing="false" onAction="#Finalizar" styleClass="card2" stylesheets="@../../../../CSS/LOGIN.css" text="Editar da  venda" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

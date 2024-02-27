@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMousePressed="#selecionadoquarto" pickOnBounds="false" prefHeight="115.0" prefWidth="100.0" style="-fx-background-radius: 0px;" styleClass="btn" stylesheets="@../../../../CSS/LOGIN.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.BtnBotoesQuartos">
+   <children>
+      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label fx:id="Lbl_status" alignment="CENTER" text="Disponivel" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="62.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="ImageView_btn_quartos" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Imagens/Disponível.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="32.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label fx:id="Num_quartos" text="02" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</VBox>

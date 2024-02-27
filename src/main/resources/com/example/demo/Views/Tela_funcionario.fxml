@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.gleidson28.GNAvatarView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.ControllerTelaFuncionario">
+   <children>
+      <HBox>
+         <children>
+            <BorderPane>
+               <top>
+                  <HBox alignment="BOTTOM_CENTER" spacing="300.0" style="-fx-background-color: linear-gradient(to left, #000000, #e74c3c);" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label contentDisplay="CENTER" stylesheets="@../../../../CSS/LOGIN.css" text="Sistema Motel Momentus" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Leelawadee UI" size="42.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="15.0" />
+                           </padding>
+                        </Label>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="26.0" prefWidth="354.0" spacing="8.0">
+                           <children>
+                              <Label text="Hora:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_Hora" text="00:00" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Data:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_Data" text="DD/MM/YYYY" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </HBox>
+               </top>
+               <left>
+                  <VBox style="-fx-background-color: linear-gradient(to top, #000000, #e74c3c);;" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="225.0" prefWidth="267.0">
+                           <children>
+                              <GNAvatarView fx:id="Foto_perfil" prefHeight="75.0" prefWidth="267.0" strokeWidth="1.0" type="CIRCLE">
+                                 <image>
+                                    <Image url="@../../../../Imagens/user.png" />
+                                 </image>
+                              </GNAvatarView>
+                              <Label fx:id="Nome_fun_perfil" text="Nome" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="267.0" spacing="8.0">
+                           <children>
+                              <Label fx:id="Btn_inicio" alignment="CENTER" graphicTextGap="10.0" onMouseClicked="#TrocarFormulario" prefHeight="35.0" prefWidth="263.0" style="-fx-background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364); -fx-background-radius: 10px;" text="Início" textAlignment="JUSTIFY" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Imagens/botao-de-inicio.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                              <Label fx:id="Btn_perfil" alignment="CENTER" graphicTextGap="20.0" onMouseClicked="#TrocarFormulario" prefHeight="35.0" prefWidth="263.0" text="Perfil" textAlignment="JUSTIFY" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../../../../Imagens/user-interface.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                              <Label alignment="CENTER" graphicTextGap="10.0" onMouseClicked="#Sair" prefHeight="35.0" prefWidth="263.0" text="Sair" textAlignment="JUSTIFY" textFill="WHITE">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="24.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Imagens/enter.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets top="250.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox fx:id="Form_inicio" prefHeight="626.0" prefWidth="954.0">
+                           <children>
+                              <HBox fx:id="pane_Detalhes_Venda" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <AnchorPane prefHeight="637.0" prefWidth="406.0" styleClass="card3" stylesheets="@../../../../CSS/LOGIN.css">
+                                       <children>
+                                          <Label layoutX="139.0" layoutY="43.0" text="Detalhes da venda" textFill="WHITE">
+                                             <font>
+                                                <Font name="Leelawadee UI Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutX="196.0" layoutY="89.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <Label layoutX="31.0" layoutY="100.0" text="Data e hora da entrada" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbl_Datatime_entrada" layoutX="211.0" layoutY="100.0" prefHeight="22.0" prefWidth="164.0" text="DD/mm/yyyy HH:MM" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="31.0" layoutY="136.0" text="Data e hora da Saida" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbl_Datatime_Saida" layoutX="211.0" layoutY="136.0" prefHeight="22.0" prefWidth="154.0" text="DD/mm/yyyy HH:MM" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="31.0" layoutY="177.0" text="Numero do quarto" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbl_Num_quarto" layoutX="211.0" layoutY="177.0" text="00" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="31.0" layoutY="215.0" text="Nome do funcionário" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbl_Nome_fun_venda" layoutX="211.0" layoutY="215.0" prefHeight="22.0" prefWidth="117.0" text="Nome" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="31.0" layoutY="248.0" text="Duração do quarto" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbl_Duracao_Venda" layoutX="211.0" layoutY="248.0" text="HH:MM" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="Tabela_Consumo_venda" layoutY="314.0" onKeyReleased="#SelecioandaLinhaSETA" onMouseClicked="#SelecionadaTabela" prefHeight="166.0" prefWidth="410.0">
+                                            <columns>
+                                                <TableColumn fx:id="Coluna_Cod_Produto" prefWidth="208.26669615507126" text="cod" visible="false" />
+                                              <TableColumn fx:id="Coluna_Nome_Produto_venda" prefWidth="208.26669615507126" text="Nome do produto" />
+                                              <TableColumn fx:id="Coluna_Valor_Produto_venda" prefWidth="93.86659240722656" text="Valor" />
+                                                <TableColumn fx:id="Coluna_QTS_Produto_Venda" prefWidth="89.33331298828125" text="Quantidades" />
+                                            </columns>
+                                          </TableView>
+                                          <Label layoutX="16.0" layoutY="289.0" text="Consumo:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Leelawadee UI Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="btn_add_consumo" layoutX="34.0" layoutY="493.0" mnemonicParsing="false" onAction="#add_consumo" styleClass="card1" stylesheets="@../../../../CSS/LOGIN.css" text="Adicionar consumo" textFill="WHITE">
+                                             <font>
+                                                <Font name="Leelawadee UI Bold" size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="btn_Excluir_consumo" layoutX="216.0" layoutY="494.0" mnemonicParsing="false" onAction="#Excluir" style="-fx-background-color: linear-gradient(to left, #000000, #e74c3c); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);; -fx-background-radius: 8px;" text="Excluir consumo" textFill="WHITE">
+                                             <font>
+                                                <Font name="Leelawadee UI Bold" size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="BotaoAcao" layoutX="160.0" layoutY="590.0" mnemonicParsing="false" onMouseClicked="#Finalizar" styleClass="btn" stylesheets="@../../../../CSS/LOGIN.css" text="Finalizar" textFill="WHITE">
+                                             <font>
+                                                <Font name="Leelawadee UI Bold" size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="383.0" layoutY="10.0" onMouseClicked="#Clicado_X_Venda" prefHeight="24.0" prefWidth="24.0" styleClass="close" stylesheets="@../../../../CSS/LOGIN.css" text="X" textFill="WHITE">
+                                             <font>
+
+
+
+
+                                                <Font name="Leelawadee UI Bold" size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Label>
+                                          <Label layoutX="213.0" layoutY="545.0" text="Total:" textFill="WHITE">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbl_Total_Venda" contentDisplay="TOP" layoutX="257.0" layoutY="544.0" prefHeight="22.0" prefWidth="153.0" text="0,00" textFill="WHITE">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Button fx:id="btn_Editar_consumo" layoutX="55.0" layoutY="493.0" mnemonicParsing="false" onAction="#Editar_consumo" style="-fx-background-color: linear-gradient(to right, #7b4397, #dc2430); -fx-background-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);" stylesheets="@../../../../CSS/LOGIN.css" text="Editar consumo" textFill="WHITE" visible="false">
+                                             <font>
+                                                <Font name="Leelawadee UI Bold" size="15.0" />
+                                             </font>
+                                          </Button>
+                                          <CheckBox fx:id="Checkbox_voltar" layoutX="11.0" layoutY="550.0" mnemonicParsing="false" onAction="#Checkbox_voltar" text="Adicionar consumo" textFill="WHITE" visible="false">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="15.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets top="-8.0" />
+                                             </opaqueInsets>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="626.0" prefWidth="547.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="546.0">
+                                       <children>
+                                          <Label prefHeight="54.0" prefWidth="194.0" text="Lista dos quartos" textFill="RED">
+                                             <font>
+                                                <Font name="Leelawadee UI Bold" size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <VBox fx:id="pane_Lista_do_Quarto" alignment="CENTER" prefHeight="527.0" prefWidth="495.0">
+                                       <children>
+                                          <ScrollPane prefHeight="532.0" prefWidth="546.0" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <GridPane fx:id="Grid" prefHeight="620.0" prefWidth="459.0">
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                </GridPane>
+                                             </content>
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                             </padding>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="Tela_Perfil" prefHeight="626.0" prefWidth="958.0" styleClass="bg-white" stylesheets="@../../../../CSS/LOGIN.css" visible="false">
+                           <children>
+                              <VBox prefHeight="626.0" prefWidth="968.0">
+                                 <children>
+                                    <AnchorPane prefHeight="620.0" prefWidth="958.0">
+                                       <children>
+                                          <GNAvatarView fx:id="Imagem_perfil" layoutX="404.0" layoutY="23.0" prefHeight="128.0" prefWidth="128.0" type="CIRCLE">
+                                             <image>
+                                                <Image url="@../../../../Imagens/user.png" />
+                                             </image>
+                                          </GNAvatarView>
+                                          <Button layoutX="381.0" layoutY="168.0" mnemonicParsing="false" onAction="#AbrirImagem" prefHeight="31.0" prefWidth="177.0" styleClass="card1" stylesheets="@../../../../CSS/LOGIN.css" text="Escolha uma imagem" textFill="#fafafa">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Label layoutX="102.0" layoutY="259.0" text="Digite o seu CPF para recuperar sua senha:">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="Txt_CPF" layoutX="450.0" layoutY="259.0" prefHeight="26.0" prefWidth="174.0" styleClass="add-textflied" stylesheets="@../../../../CSS/LOGIN.css">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="338.0" layoutY="328.0" text="Senha nova:">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="Nova_Senha" layoutX="445.0" layoutY="324.0" prefHeight="26.0" prefWidth="181.0" styleClass="add-textflied" stylesheets="@../../../../CSS/LOGIN.css">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="15.0" />
+                                             </font>
+                                          </PasswordField>
+                                          <Label layoutX="307.0" layoutY="398.0" text="Repete a Senha:">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="Nova_senha_novamente" layoutX="445.0" layoutY="394.0" prefHeight="26.0" prefWidth="181.0" styleClass="add-textflied" stylesheets="@../../../../CSS/LOGIN.css">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="15.0" />
+                                             </font>
+                                          </PasswordField>
+                                          <Button layoutX="391.0" layoutY="532.0" mnemonicParsing="false" onAction="#salvar" prefHeight="31.0" prefWidth="177.0" styleClass="btn" stylesheets="@../../../../CSS/LOGIN.css" text="Salvar" textFill="#fafafa">
+                                             <font>
+                                                <Font name="Leelawadee UI" size="15.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
