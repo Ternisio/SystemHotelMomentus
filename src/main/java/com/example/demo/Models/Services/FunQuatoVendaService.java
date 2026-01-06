@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class FunQuatoVendaService implements FuncionarioVendaInterface {
@@ -46,6 +47,7 @@ public class FunQuatoVendaService implements FuncionarioVendaInterface {
      private ConfigDao configDao;
      public boolean PareD = false;
     ConsumoDao consumoDao = new ConsumoDao();
+  private   ObservableList<Quarto> ListaQuartoUI = null;
      private ControllerTelaFuncionario controllerTelaFuncionario;
 
      public void pararThread(){
@@ -65,50 +67,51 @@ public class FunQuatoVendaService implements FuncionarioVendaInterface {
         this.quarto = quarto;
         this.quartoDao = quartoDao;
         this.funcionario = funcionario;
-        ListaQuarto.clear();
-        Grid.getChildren().clear();
-        ListaQuarto.addAll(quartoDao.ListaQuarto());
-        if (ListaQuarto.size()>0) {
-            meuClick = new MeuClick() {
-                @Override
-                public void onClickQuarto(Quarto quarto) {
-                    SelecionouQuarto(quarto);
-                }
-            };
-
+        ListaQuartoUI = quartoDao.ListaQuarto();
+        atualizar();
         }
-        int col = 0;
-        int row = 0;
-        try {
 
-            for (int i =  0; i < ListaQuarto.size(); i++){
-                FXMLLoader item =  new FXMLLoader();
-                item.setLocation(getClass().getResource("/com/example/demo/Views/Btn_botoes_quartos.fxml"));
-                VBox vBox = item.load();
-                BtnBotoesQuartos btnBotoesQuartos = item.getController();
-                btnBotoesQuartos.Botoes(ListaQuarto.get(i), meuClick);
-                if(col == 4 ){
-                    col = 0;
+        void atualizar(){
+            ListaQuarto.clear();
+            Grid.getChildren().clear();
+            ListaQuarto.addAll(ListaQuartoUI);
+            if (!ListaQuarto.isEmpty()) {
+                meuClick = new MeuClick() {
+                    @Override
+                    public void onClickQuarto(Quarto quarto) {
+                        SelecionouQuarto(quarto);
+                    }
+                };
 
-                    row++;
+            }
+            int col = 0;
+            int row = 0;
+            try {
+
+                for (int i =  0; i < ListaQuarto.size(); i++){
+                    FXMLLoader item =  new FXMLLoader();
+                    item.setLocation(getClass().getResource("/com/example/demo/Views/Btn_botoes_quartos.fxml"));
+                    VBox vBox = item.load();
+                    BtnBotoesQuartos btnBotoesQuartos = item.getController();
+                    btnBotoesQuartos.Botoes(ListaQuarto.get(i), meuClick);
+                    if(col == 4 ){
+                        col = 0;
+
+                        row++;
+                    }
+                    Grid.add(vBox,col++,row);
+                    GridPane.setMargin(vBox, new Insets(5 ));
+
+
+
                 }
-                Grid.add(vBox,col++,row);
-                GridPane.setMargin(vBox, new Insets(5 ));
-
+            }catch (IOException e){
+                e.printStackTrace();
 
 
             }
-        }catch (IOException e){
-            e.printStackTrace();
-
 
         }
-
-
-
-
-
-    }
 
     @Override
     public void Lbl(ControllerEditar_venda controllerEditar_venda, Config config, ConfigDao configDao) {
@@ -116,32 +119,38 @@ public class FunQuatoVendaService implements FuncionarioVendaInterface {
     }
 
     public void SelecionouQuarto(Quarto quarto ){
+        System.out.println(quarto.getCod_Quarto());
         Object[] opc = {"Sim","Não"};
         if (quarto.getEstado().equals("Disponível")){
             int resultDialog =  JOptionPane.showOptionDialog(null,"Você quer o quarto "+quarto.getNum_quarto()+" ficar em ocupado ?","Pergunta",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opc,opc[0]);
             if (resultDialog == JOptionPane.YES_OPTION){
                 quarto.setEstado("Ocupado");
-                quartoDao.Editar(quarto);
                 String cod = CodVenda();
                 vendas.setCod_venda(cod);
+                vendas.setPagamento("");
+                vendas.setData_hora_Entrada(LocalDateTime.now());
+                vendas.setData_hora_Saida(null);
+                vendas.setStatus("Realizando");
+                vendas.setTotal(0.00);
                 Cadastro(vendas,quarto,funcionario);
-                atualizado(Grid,quartoDao,this.quarto,vendas,funcionario);
+                quartoDao.Editar(quarto);
+                AtualizarLista(quarto);
 
             }
         } else if (quarto.getEstado().equals("Ocupado")) {
             int resultDialog =  JOptionPane.showOptionDialog(null,"Você quer ver os detalhes no quarto "+quarto.getNum_quarto()+"?","Pergunta",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opc,opc[0]);
             if (resultDialog == JOptionPane.YES_OPTION){
-            vendaDao.BuscarRealizando(quarto,vendas, funcionario);
-            System.out.println(quarto.getNum_quarto());
+                vendas.setQuarto(quarto);
+            vendaDao.BuscarRealizando(vendas);
+            System.out.println(vendas.getQuarto().getNum_quarto());
         controllerTelaFuncionario.pane_Lista_do_Quarto.setDisable(true);
         controllerTelaFuncionario.pane_Detalhes_Venda.setDisable(false);
             controllerTelaFuncionario.lbl_Num_quarto.setText(quarto.getNum_quarto());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
             controllerTelaFuncionario.lbl_Datatime_entrada.setText(vendas.getData_hora_Entrada().format(formatter));
-            controllerTelaFuncionario.lbl_Nome_fun_venda.setText(funcionario.getNome_Fun());
+            controllerTelaFuncionario.lbl_Nome_fun_venda.setText(vendas.getFuncionario().getNome_Fun());
               PareD = false;
-
-            CarregarTabela(vendas);
+CarregarTabela(vendas);
                 Thread thread = new Thread(()-> {
                     while (!PareD) {
                         try {
@@ -174,98 +183,67 @@ public class FunQuatoVendaService implements FuncionarioVendaInterface {
             if (resultDialog == JOptionPane.YES_OPTION){
                 quarto.setEstado("Disponível");
                 quartoDao.Editar(quarto);
-                atualizado(Grid,quartoDao,this.quarto,vendas,funcionario);
+                AtualizarLista(quarto);
             }
         }
     }
     public String CodVenda() {
 
-        ObservableList<Vendas> Cod_Venda = FXCollections.observableArrayList();
-        Cod_Venda.clear();
-        Cod_Venda = vendaDao.CodigodoVenda();
-        int index = 1;
-        String cod = "V000001";
-
-        for (Vendas vendas : Cod_Venda) {
-            if (10 > index) {
-                cod = "V00000" + index;
-                System.out.println("Antes do if\n");
-                System.out.println(cod+"\n");
-                System.out.println(vendas.getCod_venda()+"\n");
-
-                if (cod.equals(vendas.getCod_venda())) {
-                    index++;
-                    cod = "V00000" + index;
-
-                    System.out.println("Depois do if\n");
-                    System.out.println(cod+"\n");
-                    System.out.println(vendas.getCod_venda()+"\n\n");
-
-                }
-            }  if (index > 9 & 100 > index) {
-                cod = "V0000" + index;
-
-                System.out.println("Entrou 2 Casas\n");
-                System.out.println("Antes do if\n");
-                System.out.println(cod+"\n");
-                System.out.println(vendas.getCod_venda()+"\n");
-                if (cod.equals(vendas.getCod_venda())) {
-                    index++;
-                    String i = Integer.toString(index);
-                    System.out.println("Entrou 2 Casas\n");
-                    System.out.println("Depois do if\n");
-                    System.out.println(cod+"\n");
-                    System.out.println(vendas.getCod_venda()+"\n");
-
-                    cod = "V0000" + i;
-                }
-            } if (index > 99 & 999>=index) {
-                cod = "V000" + index;
-
-                if (cod.equals(vendas.getCod_venda())) {
-                    index++;
-                    cod = "V000" + index;
-                }
-            }  if (index > 999 & 9999>index) {
-                cod = "V00" + index;
-                if (cod.equals(vendas.getCod_venda())) {
-                    index++;
-                    cod = "V00" + index;
-                }
-            } if (index > 9999) {
-                cod = "V0" + index;
-
-                if (cod.equals(vendas.getCod_venda())) {
-                    index++;
-                    cod = "V0" + index;
-                }
-            } if (index > 99999){
-                cod = "V" + index;
-
-                if (cod.equals(vendas.getCod_venda())) {
-                    index++;
-                    cod = "V" + index;
-                }
-            }
-
-
-        }
-
-        return cod;
+      String  Cod_Venda = "V" + vendaDao.CodigodoVenda();
+        return Cod_Venda;
 
 
     }
-    public void finalizar(){
-        vendas.setStatus("Finalizado");
-     vendas.setTotal(Double.parseDouble(controllerTelaFuncionario.lbl_Total_Venda.getText().replace(",",".")));
-     vendaDao.finalizar(vendas);
-     vendaDao.Editarq(controllerTelaFuncionario.lbl_Num_quarto.getText(),"Sujo");
-     atualizado(Grid,quartoDao,quarto,vendas,funcionario);
+    public boolean finalizar(){
+        String[] opcoes = { "Pix", "Dinheiro", "Cartão" };
+        vendas.setData_hora_Saida(LocalDateTime.now());
+
+        String escolha = (String) JOptionPane.showInputDialog(
+                null,
+                "Selecione a forma de pagamento:",
+                "Forma de Pagamento",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );
+    System.out.println(escolha);
+    if (escolha != null){
         PareD = true;
+        vendas.setPagamento(escolha);
+        vendas.setStatus("Finalizado");
+        vendas.setTotal(Double.parseDouble(controllerTelaFuncionario.lbl_Total_Venda.getText().replace(".","").replace(",",".")));
+        vendaDao.cadastrar(vendas);
+        quarto.setCod_Quarto(vendas.getQuarto().getCod_Quarto());
+        quarto.setNum_quarto(vendas.getQuarto().getNum_quarto());
+        quarto.setEstado("Sujo");
+        quartoDao.Editar(quarto);
+        AtualizarLista(quarto);
+        return true;
+
+    }else {
+        return false;
+    }
+
+    }
+    void AtualizarLista(Quarto quarto){
+        for (int i = 0; i < ListaQuartoUI.size();i++){
+            if (ListaQuartoUI.get(i).getCod_Quarto() == quarto.getCod_Quarto()){
+                ListaQuartoUI.set(i,quarto);
+                break;
+            }
+
         }
+        atualizar();
+
+    }
+
+
+
 
     public void Cancelado(){
-        vendaDao.Cancelado(vendas);
+        vendas.setStatus("Cancelado");
+        vendaDao.cadastrar(vendas);
         vendaDao.Editarq(controllerTelaFuncionario.lbl_Num_quarto.getText(), "Disponível");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sucesso");
@@ -306,7 +284,9 @@ public class FunQuatoVendaService implements FuncionarioVendaInterface {
     }
     @Override
     public void Cadastro(Vendas vendas, Quarto quarto, Funcionario funcionario) {
-        vendaDao.cadastrar(funcionario,vendas,quarto);
+        vendas.setQuarto(quarto);
+        vendas.setFuncionario(funcionario);
+        vendaDao.cadastrar(vendas);
 
     }
 
@@ -350,6 +330,7 @@ consumoDao.editarProduto(Id_Produto,estoques);
     }
     public double total(Vendas vendas, Config config){
     double Total =0.00;
+
     LocalTime tpi = LocalTime.parse(config.getPernoite_inicio());
     LocalTime tpf = LocalTime.parse(config.getPernoite_fim());
     LocalDateTime DataPI = LocalDateTime.of(vendas.getData_hora_Entrada().getYear(),vendas.getData_hora_Entrada().getMonth(),vendas.getData_hora_Entrada().getDayOfMonth(),tpi.getHour(),tpi.getMinute());

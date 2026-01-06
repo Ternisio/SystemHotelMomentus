@@ -1,12 +1,18 @@
 package com.example.demo.Models.Dao;
 
+import com.example.demo.Models.Api.GlobalApi;
 import com.example.demo.Models.Classes.Produto;
 import com.example.demo.Models.Database.Conexao;
+import com.example.demo.Models.Graphqls.Produtos.Query;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 import java.io.*;
+import java.net.http.HttpClient;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -16,6 +22,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProdutoDao {
+    GlobalApi globalApi = new GlobalApi();
+    Query queryProdutos = new Query();
     public ObservableList<Produto> ConsultaPorNomeOuCodigodoProdutoCOMESTOQUES(String resultado ){
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -67,26 +75,30 @@ public class ProdutoDao {
 
     }
     public ObservableList<Produto> ConsultaPorComEstoques( ){
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "SELECT * FROM produtos WHERE estoque_prod > 0";
+
+        String query = queryProdutos.ProdutosComEstoques;
+        String compactQuery = query.replace("\n", " ").replace("\r", " ");
+         String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+
         ObservableList<Produto> lista = FXCollections.observableArrayList();
+        HttpClient client = HttpClient.newHttpClient();
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()){
+            HttpResponse<String> response = globalApi.Api(client,json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("ProdutosComEstoques");
+            for (JsonNode rs : data){
                 Produto produto = new Produto();
-                produto.setIdProduto(rs.getString("idProdutos"));
-                produto.setNome_prod( rs.getString("Nome_prod"));
-                produto.setTipo_Produto(   rs.getString("tipo_prod"));
-                produto.setExibirValor( String.format("%.2f",rs.getFloat("Valor_prod")).replace(".",","));
-                produto.setEstoques(   rs.getInt("estoque_prod"));
-                produto.setFoto(rs.getString("Nome_foto"));
+                produto.setIdProduto(rs.get("idProduto").asText());
+                produto.setNome_prod( rs.get("nome").asText());
+                produto.setTipo_Produto(   rs.get("categoria").asText());
+                produto.setExibirValor( String.format("%.2f",rs.get("valor").asDouble()).replace(".",","));
+                produto.setEstoques(   rs.get("quantidade").asInt());
+                produto.setFoto(rs.get("Nome_Foto").asText());
 
                 ;
-                lista.add(produto);
-            }
-        }catch (SQLException e){
+                lista.add(produto);}
+
+        }catch (Exception e){
             e.printStackTrace();
         }
         return lista;

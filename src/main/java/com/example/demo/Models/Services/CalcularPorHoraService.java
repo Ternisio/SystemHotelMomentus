@@ -51,14 +51,14 @@ public  class CalcularPorHoraService implements Calcular {
         double ValorTotal = 0.0;
         int min = (int) (ChronoUnit.MINUTES.between(Hora_entrada, Hora_Saida));
         MostrarDuraçãoHoras(duracao,min);
-        if(15 > min){
+        if(config.getTolerancia() > min){
             botao.setText("Cancelar");
             botao.setStyle("-fx-background-color: red;");
         }else {
             botao.setText("Finalizar");
             botao.setStyle("-fx-background-color:  linear-gradient(to left, #6441a5, #2a0845);");
         }
-        if (min >= 15 && min <= 70) {
+        if (min >= config.getTolerancia() && min <= 70) {
             ValorTotal = config.getPrimeiraHora_valor();
         } else if (min > 70 && min < 120) {
             ValorTotal = config.getSegundaHora_valor();
@@ -66,9 +66,14 @@ public  class CalcularPorHoraService implements Calcular {
             double valorInicial = config.getSegundaHora_valor(); // Valor inicial para 2 horas
             double valorPorIntervalo = config.getValor_cada_hora(); // Valor por intervalo de 15 a 60 minutos
 
-            long intervalosRestantes = (min - (2 * 60)) / 45; // Número de intervalos restantes
+            long intervalosRestantes = (min - 120) / config.getDuracaoTaxaAdicional(); // Número de intervalos restantes
 
             ValorTotal = valorInicial + (intervalosRestantes * valorPorIntervalo);
+            int MinTol = min%config.getDuracaoTaxaAdicional();
+            if(config.getTolerancia() > MinTol){
+                ValorTotal = ValorTotal + config.getValor_cada_hora();
+            }
+
 
 
 
@@ -85,16 +90,20 @@ public  class CalcularPorHoraService implements Calcular {
             int fim_hora = tpi.getHour()  - 1;
             LocalDateTime Hrfim = LocalDateTime.of(vendas.getData_hora_Entrada().getYear(), vendas.getData_hora_Entrada().getMonth(), vendas.getData_hora_Entrada().getDayOfMonth(), fim_hora, 0);
             long minutoH = ChronoUnit.MINUTES.between(Hora_entrada, Hrfim);
-            if(minutoH>= 15 && 60>=minutoH){
+            if(minutoH>= config.getTolerancia() && 60>=minutoH){
                 valorInicial = config.getPrimeiraHora_valor();
             }else if(minutoH>=120){
                 valorInicial = config.getSegundaHora_valor();
             }else {
                 valorInicial = config.getSegundaHora_valor(); // Valor inicial para 2 horas
                 double valorPorIntervalo = config.getValor_cada_hora(); // Valor por intervalo de 60 minutos
-                int intervalosRestantes = (int) (minutoH - (2 * 60)) / 45; // Número de intervalos restantes
+                int intervalosRestantes = (int) ((minutoH - 120) / config.getDuracaoTaxaAdicional()); // Número de intervalos restantes
 
                 valorH = valorInicial + (intervalosRestantes * valorPorIntervalo);
+                int MinTol = min%config.getDuracaoTaxaAdicional();
+                if(config.getTolerancia() > MinTol){
+                    valorH = valorH + config.getValor_cada_hora();
+                }
             }
             ValorTotal = ValorPernoite + valorH;
 
@@ -104,7 +113,7 @@ public  class CalcularPorHoraService implements Calcular {
             double duasvalor = config.getSegundaHora_valor();
             double taxaHoraria = config.getValor_cada_hora(); // Exemplo de taxa horária
 
-            long horasTrabalhadas = ((min / 60) - (12*dias)) - 2; // Exemplo de horas trabalhadas
+            long horasTrabalhadas = ((min / config.getDuracaoTaxaAdicional()) - (12*dias)) - 2; // Exemplo de horas trabalhadas
 
             double valorHorasTrabalhadas = horasTrabalhadas * taxaHoraria;
             double valorNoitesPernoitadas = ValorPeriodoDiaria(Hora_entrada, Hora_Saida, config);

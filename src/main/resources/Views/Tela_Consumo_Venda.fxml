@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to left, #000000, #e74c3c);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.Consumo_VendaController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <Label text="Nome do produto:" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="BuscarProduto" prefHeight="26.0" prefWidth="170.0" styleClass="add-textflied" stylesheets="@../../../../CSS/LOGIN.css" />
+            <Pane prefHeight="100.0" prefWidth="41.0" />
+            <Label text="Quantidades:" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" onMouseClicked="#meno_qts">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Imagens/minus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <TextField fx:id="Txt_qts" alignment="CENTER" editable="false" prefHeight="26.0" prefWidth="28.0" text="0" />
+            <Label onMouseClicked="#add_qts">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Imagens/plus.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="206.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <TableView fx:id="Tabela_consumo" onMouseClicked="#TabelaPRoduto_SelecioandaLinha" prefHeight="172.0" prefWidth="314.0">
+              <columns>
+                  <TableColumn fx:id="coluna_Cod_Produto" prefWidth="156.79998779296875" text="cod" visible="false" />
+                <TableColumn fx:id="coluna_Nome_Produto" prefWidth="156.79998779296875" text="Nome do Produto" />
+                <TableColumn fx:id="coluna_Valor_Produto" prefWidth="72.0" text="Preço" />
+                  <TableColumn fx:id="coluna_QTS_Produto" minWidth="5.60003662109375" prefWidth="82.4000244140625" text="Quantidades" />
+                  <TableColumn fx:id="coluna_foto_Produto" editable="false" prefWidth="75.0" sortable="false" text="Foto" visible="false" />
+              </columns>
+            </TableView>
+            <AnchorPane fx:id="View_Foto" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 8px;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fx:id="ImagemFoto" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Imagens/products.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <VBox fx:id="View_Tabela_consumo_editar" alignment="CENTER" prefHeight="205.0" prefWidth="474.0">
+               <children>
+                  <TableView fx:id="Tabela_consumo_Editar" disable="true" maxWidth="330.0" prefHeight="62.0" prefWidth="270.0">
+                     <columns>
+                        <TableColumn fx:id="coluna_Nome_Produto_Editar" prefWidth="156.79998779296875" text="Nome do Produto" />
+                        <TableColumn fx:id="coluna_Valor_Produto_Editar" prefWidth="72.0" text="Preço" />
+                        <TableColumn fx:id="coluna_QTS_Produto_Editar" minWidth="5.60003662109375" prefWidth="82.4000244140625" text="Quantidades" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../../../CSS/LOGIN.css">
+         <children>
+            <Button fx:id="btn_add" mnemonicParsing="false" onAction="#Add_consumo" styleClass="btn" stylesheets="@../../../../CSS/LOGIN.css" text="Adicionar" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btn_editar" mnemonicParsing="false" onAction="#Editar_consumo" styleClass="btn" stylesheets="@../../../../CSS/LOGIN.css" text="Editar" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

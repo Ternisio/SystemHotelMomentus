@@ -7,6 +7,8 @@ import com.example.demo.Models.Interfaces.LoginInterface;
 import com.example.demo.Models.Services.LoginService;
 import com.example.demo.Util.MaskFieldUtil;
 import io.github.gleidson28.GNAvatarView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -60,13 +62,14 @@ private LoginInterface loginInterface;
     private PasswordField Nova_senha_novamente;
     private FuncionarioDao funcionarioDao;
     Funcionario funcionario = new Funcionario();
+    ObservableList<Funcionario> lista = FXCollections.observableArrayList();
     Stage stage;
     public void inicial(HelloApplication main, FuncionarioDao funcionarioDao, LoginInterface loginInterface){
         this.main = main;
         this.funcionarioDao = funcionarioDao;
         this.loginInterface = loginInterface;
         loginInterface.inicial(this);
-        this.funcionarioDao.ListaFuncionario();
+       lista = this.funcionarioDao.ListaFuncionario();
     }
 void validar(){
     boolean validacao = loginInterface.ValidationLogin(txt_nome,Senha,funcionarioDao,funcionario);
@@ -130,27 +133,26 @@ void validarCPF(){
     @FXML
     void MostrandoAfoto(KeyEvent event) {
         Lbl_error.setText("");
+Path Pasta = Paths.get("Fotos_Fun");
+    String foto =  lista.stream() .filter(f -> f.getNome_Fun() != null && f.getNome_Fun().toLowerCase().
+                contains(txt_nome.getText().toLowerCase()) && !txt_nome.getText().isBlank()) .map(Funcionario::getNome_Foto) .findFirst() .orElse(null);
 
-        File pasta = new File("Fotos_Fun/");
-        String caminho = pasta.getAbsolutePath();
-    String foto = funcionarioDao.foto(txt_nome.getText());
-    Path Cp = Paths.get(caminho+"\\"+foto);
-    System.out.println(caminho);
-    if (Files.exists(Cp)){
-        if (foto.equals(null) || foto.isBlank() || txt_nome.getText().equals("") || foto.isEmpty()) {
+           if(foto!=null){
+        Path CaminhoFoto = Pasta.resolve(foto);
 
-            Image imagem = new Image("/Imagens/user.png");
-            Foto.setImage(imagem);
-
-        } else {
-            System.out.println(caminho +"\\"+ foto);
-            Image imagem = new Image(String.valueOf(new File(caminho+"\\"+ foto)));
+    if (Files.exists(CaminhoFoto)){
+            Image imagem = new Image(String.valueOf(new File(CaminhoFoto.toString())));
             Foto.setImage(imagem);
 
 
-        }}else {
-    System.out.println("nao existe");}
+        }else {
+
+        Image imagem = new Image("/Imagens/user.png");
+        Foto.setImage(imagem);
     }
+    }else{
+               Image imagem = new Image("/Imagens/user.png");
+               Foto.setImage(imagem);}}
     @FXML
     void DigitandoaSenha(KeyEvent event){
         if (event.getCode()!= KeyCode.ENTER) {

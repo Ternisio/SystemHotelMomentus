@@ -1,19 +1,27 @@
 package com.example.demo.Models.Dao;
 
+import com.example.demo.Models.Api.GlobalApi;
 import com.example.demo.Models.Classes.Quarto;
 import com.example.demo.Models.Classes.Vendas;
 import com.example.demo.Models.Database.Conexao;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class QuartoDao {
+    GlobalApi globalApi = new GlobalApi();
     public int QuartoOcupados() {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -78,48 +86,44 @@ public int QuartoDisponiveis() {
 
     }
        public ObservableList<Quarto> ListaQuarto( ){
-           PreparedStatement ps = null;
-           ResultSet rs = null;
-        String sql = "SELECT * FROM quartos  ORDER BY num_quartos";
-        ObservableList<Quarto> lista = FXCollections.observableArrayList();
-        try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()){
-                Quarto quarto = new Quarto();
-                        quarto.setCod_Quarto(rs.getInt("idquartos"));
-                        quarto.setNum_quarto( rs.getString("num_quartos"));
-                        quarto.setEstado(   rs.getString("Status_quartos"));
+           ObservableList<Quarto> lista = FXCollections.observableArrayList();
+           lista.clear();
+       String Json = """
+                   {
+                   "query": "query { TodosQuartos { IdQuarto Num Tipo } }"
+                   } 
+                   """;
+       HttpClient client = HttpClient.newHttpClient();
+       try { HttpResponse<String> response = globalApi.Api(client,Json);
+           ObjectMapper objectMapper = new ObjectMapper();
+           JsonNode data = objectMapper.readTree(response.body()).get("data").get("TodosQuartos");
+           for(JsonNode Res : data){
+               Quarto quarto = new Quarto();
+               quarto.setCod_Quarto(Res.get("IdQuarto").asInt());
+               quarto.setNum_quarto(Res.get("Num").asText());
+               quarto.setEstado(Res.get("Tipo").asText());
+               lista.add(quarto);
+           }
+       } catch (Exception e){
 
-                        ;
-                lista.add(quarto);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+       }
         return lista;
 
        }
 
 
     public void Editar(Quarto Quarto) {
-        String sql = "UPDATE quartos SET num_quartos = ?,Status_quartos = ? where idquartos = ?";
-        PreparedStatement ps = null;
-
+        String json = "{ \"query\": \"mutation { AtualizarQuarto("
+                + "IdQuarto: \\\"" + Quarto.getCod_Quarto() + "\\\", "
+                + "Num: \\\"" + Quarto.getNum_quarto() + "\\\", "
+                + "Tipo: \\\"" + Quarto.getEstado() + "\\\""
+                + ") }\" }";
+        HttpClient client = HttpClient.newHttpClient();
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setString(1, Quarto.getNum_quarto());
-            ps.setString(2, Quarto.getEstado());
-            ps.setInt(3,Quarto.getCod_Quarto());
-            ps.execute();
-            ps.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sucesso");
-            alert.setHeaderText("Aviso:");
-            alert.setContentText("Foi atualizado com sucesso");
-            alert.showAndWait();
+            HttpResponse<String> response = globalApi.Api(client,json);
+            System.out.println(response.body());
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             // TODO: handle exception
         }
     }

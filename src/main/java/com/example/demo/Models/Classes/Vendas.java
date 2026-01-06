@@ -6,11 +6,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Vendas  extends Quarto{
-    private String Cod_venda, status, formatado_Data_Entrada, Formatado_Data_hora_Saida,Nome_fun, totalV;
-
-
-
-    private LocalDateTime  Data_hora_Entrada, Data_hora_Saida;
+    private String Cod_venda, status, formatado_Data_Entrada, Formatado_Data_hora_Saida,Nome_fun, totalV ,Pagamento;
+   private LocalDateTime  Data_hora_Entrada, Data_hora_Saida;
+   private Funcionario funcionario;
+   private Quarto quarto;
     private double total;
     public Vendas(){}
     public Vendas( String status,String Num_quarto, LocalDateTime Data_hora_Entrada, LocalDateTime Data_hora_Saida){
@@ -100,12 +99,32 @@ public class Vendas  extends Quarto{
         Formatado_Data_hora_Saida = formatado_Data_hora_Saida;
     }
 
-    public String getNome_fun() {
-        return Nome_fun;
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public String getPagamento() {
+        return Pagamento;
+    }
+
+    public void setPagamento(String pagamento) {
+        Pagamento = pagamento;
     }
 
     public String getTotalV() {
         return totalV;
+    }
+
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
     }
 
     public void setTotalV(String totalV) {

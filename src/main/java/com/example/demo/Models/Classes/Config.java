@@ -6,6 +6,24 @@ public class Config implements Serializable {
 
     private Double PrimeiraHora_valor,SegundaHora_valor, Valor_cada_hora, Pernoite_valor;
     private String Pernoite_inicio,Pernoite_fim, Pernoite_meio;
+    private int Tolerancia, DuracaoTaxaAdicional;
+
+    public int getDuracaoTaxaAdicional() {
+        return DuracaoTaxaAdicional;
+    }
+
+    public void setDuracaoTaxaAdicional(int duracaoTaxaAdicional) {
+        DuracaoTaxaAdicional = duracaoTaxaAdicional;
+    }
+
+    public int getTolerancia() {
+        return Tolerancia;
+    }
+
+    public void setTolerancia(int tolerancia) {
+        Tolerancia = tolerancia;
+    }
+
     public Double getPrimeiraHora_valor() {
         return PrimeiraHora_valor;
     }

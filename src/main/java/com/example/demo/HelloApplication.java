@@ -42,7 +42,17 @@ public class HelloApplication extends Application {
     LoginInterface loginInterface = new LoginService();
     ControllerTelaFuncionario controllerTelaFuncionario = new ControllerTelaFuncionario();
     @Override
+
+
     public void start(Stage stage) throws IOException {
+        LoginResponse res = SessionManager.carregar();
+        if(res != null){
+            trocartela(res.getFuncionario().getTipo_Fun(), res.getFuncionario());
+        }else{
+            login();
+        }
+    }
+    void login() throws IOException {
 
         FXMLLoader loader =  new FXMLLoader(getClass().getResource("Views/Login.fxml"));
 
@@ -54,6 +64,8 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
+
 
     }
     public void trocartela(String tipo_fun , Funcionario funcionario) throws IOException{
@@ -94,6 +106,7 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+
+        launch(args);
     }
 }

@@ -1,8 +1,12 @@
 package com.example.demo.Models.Dao;
 
+import com.example.demo.Models.Api.GlobalApi;
 import com.example.demo.Models.Classes.Config;
 import com.example.demo.Models.Classes.Produto;
 import com.example.demo.Models.Database.Conexao;
+import com.example.demo.Util.NumeroHoras;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -10,6 +14,10 @@ import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -17,9 +25,11 @@ import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 
 public class ConfigDao {
-
+    GlobalApi globalApi = new GlobalApi();
+NumeroHoras Num = new NumeroHoras();
     public ObservableList<Config> ListaConfig() {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -49,27 +59,38 @@ public class ConfigDao {
 
     }
     public void ListaConfig(Config config) {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "SELECT * FROM  config";
-        ObservableList<Config> lista = FXCollections.observableArrayList();
+        String json = "{ \"query\": \"query { ListaConfig { IdConfig "
+                + "ValorPrimeiraHora "
+                + "Tolerancia "
+                + "FechamentoDeVendas "
+                + "valorTaxaAdicional "
+                + "duracaoTaxaAdicional "
+                + "Pernoite_Inicio "
+                + "Pernoite_Valor "
+                + "} }\" }";
+        HttpClient client = HttpClient.newHttpClient();
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
 
-                config.setPrimeiraHora_valor(rs.getDouble("PrimeiraHora_valor"));
-                config.setSegundaHora_valor(rs.getDouble("SegundaHora_valor"));
-                config.setValor_cada_hora(rs.getDouble("Valor_cada_Hora"));
-                config.setPernoite_inicio(rs.getString("Pernoite_Inicial"));
-                config.setPernoite_meio(rs.getString("Pernoite_Horaminimo"));
-                config.setPernoite_fim(rs.getString("Pernoite_Fim"));
-                config.setPernoite_valor(rs.getDouble("Pernoite_Valor"));
+            HttpResponse<String> response = globalApi.Api(client,json) ;
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode data = objectMapper.readTree(response.body()).get("data").get("ListaConfig");
 
-
+            config.setPrimeiraHora_valor(data.get("ValorPrimeiraHora").asDouble());
+            config.setValor_cada_hora(data.get("valorTaxaAdicional").asDouble());
+            config.setSegundaHora_valor(config.getPrimeiraHora_valor() + config.getValor_cada_hora());
+            config.setTolerancia(data.get("Tolerancia").asInt());
+            config.setDuracaoTaxaAdicional(data.get("duracaoTaxaAdicional").asInt());
+            config.setPernoite_inicio(data.get("Pernoite_Inicio").asText());
+            config.setPernoite_valor(data.get("Pernoite_Valor").asDouble());
+            LocalTime inicio = LocalTime.parse(config.getPernoite_inicio());
+            LocalTime fim = inicio.plusHours(12);
+            LocalTime meio = inicio.plusHours(6);
+            config.setPernoite_fim(Num.NumH(fim.getHour()) + ":"+ Num.NumH(fim.getMinute()));
+            config.setPernoite_meio(Num.NumH(meio.getHour()) + ":"+ Num.NumH(meio.getMinute()));
 
             }
-        } catch (SQLException e) {
+         catch (Exception e) {
+
             e.printStackTrace();
         }
 

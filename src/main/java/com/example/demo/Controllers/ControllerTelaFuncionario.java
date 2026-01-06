@@ -34,6 +34,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -150,9 +152,8 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
             Image imagem = new Image("/Imagens/user.png");
             Foto_perfil.setImage(imagem);
         } else {
-            File pasta = new File("Fotos_Fun/");
-            String caminho = pasta.getAbsolutePath();
-            Image imagem = new Image(String.valueOf(new File(caminho + "\\" + funcionario.getNome_Foto())));
+            Path path = Paths.get("Fotos_Fun/" + funcionario.getNome_Foto());
+            Image imagem = new Image(String.valueOf(new File(path.toString())));
             Foto_perfil.setImage(imagem);
             Imagem_perfil.setImage(imagem);
 
@@ -373,7 +374,8 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
             Object[] opc = {"Sim", "Não"};
             int resultDialog = JOptionPane.showOptionDialog(null, "Você deseja finalizar a venda ?", "Pergunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opc, opc[0]);
             if (resultDialog == JOptionPane.YES_OPTION) {
-                funcionarioVendai.finalizar();
+
+            if (funcionarioVendai.finalizar()){
                 lbl_Datatime_Saida.setText("DD/mm/yyyy HH:MM");
                 lbl_Datatime_entrada.setText("DD/mm/yyyy HH:MM");
                 lbl_Nome_fun_venda.setText("Nome");
@@ -382,7 +384,7 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
                 lbl_Total_Venda.setText("0,00");
                 funcionarioVendai.limparTabela();
                 pane_Lista_do_Quarto.setDisable(false);
-                pane_Detalhes_Venda.setDisable(true);
+                pane_Detalhes_Venda.setDisable(true);}
             }
         }
         ;

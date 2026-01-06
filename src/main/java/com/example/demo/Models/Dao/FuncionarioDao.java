@@ -1,8 +1,13 @@
 package com.example.demo.Models.Dao;
 
+import com.example.demo.Models.Api.GlobalApi;
 import com.example.demo.Models.Classes.Funcionario;
+import com.example.demo.Models.Classes.LoginResponse;
 import com.example.demo.Models.Classes.Produto;
 import com.example.demo.Models.Database.Conexao;
+import com.example.demo.Models.Services.SessionManager;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -10,7 +15,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Blob;
@@ -21,6 +32,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 public class FuncionarioDao {
+    GlobalApi globalApi = new GlobalApi();
 
     public ObservableList<Funcionario> ConsultaPorNomeOuCodigodoFuncionario(String resultado ){
         PreparedStatement ps = null;
@@ -66,33 +78,46 @@ public class FuncionarioDao {
 
    }
    public boolean verificar(TextField Nome, PasswordField Senha, Funcionario funcionario)  {
-       PreparedStatement ps = null;
-       ResultSet rs = null;
+
        boolean valicacao = false;
-       String sql = "SELECT * FROM  funcionarios WHERE Nome_Fun = ? AND  Senha_Fun = ? ";
+       HttpClient client = HttpClient.newHttpClient();
+       String query = "mutation { LoginDesktop(inputLogin: { Nome: \\\""
+               + Nome.getText()
+               + "\\\", Senha: \\\""
+               + Senha.getText()
+               + "\\\", Remember: true }) { success token funcionario { Id_Funcionarios "
+               + "Nome_Fun "
+               + "Tipo_Fun "
+               + "CPF_Fun "
+               + "Nome_Foto } } }";
+
+       String json = "{ \"query\": \"" + query + "\" }";
        try {
-           ps = Conexao.conectar().prepareStatement(sql);
-           ps.setString(1, Nome.getText());
-           ps.setString(2,Senha.getText());
-           rs = ps.executeQuery();
-           while (rs.next()){
-           valicacao = true;
-           funcionario.setId_Fun(rs.getString("idFuncionarios"));
-           funcionario.setNome_Fun(rs.getString("Nome_Fun"));
-               funcionario.setTipo_Fun( rs.getString("Tipo_Fun"));
-               funcionario.setNome_Foto(rs.getString("Nome_Foto"));
-               funcionario.setCpf_Fun(rs.getString("Cpf_Fun"));
+       HttpResponse<String> response = globalApi.Api(client,json);
+// Processa resposta
+       ObjectMapper mapper = new ObjectMapper();
+       JsonNode root = mapper.readTree(response.body()).path("data").path("LoginDesktop");
 
+       boolean success = root.path("success").asBoolean();
+       if (success) {
+           String token = root.path("token").asText();
+           funcionario.setId_Fun(root.path("funcionario").path("Id_Funcionarios").asText());
+           funcionario.setNome_Fun(root.path("funcionario").path("Nome_Fun").asText());
+           funcionario.setTipo_Fun(root.path("funcionario").path("Tipo_Fun").asText());
+           funcionario.setCpf_Fun(root.path("funcionario").path("CPF_Fun").asText());
+           funcionario.setNome_Foto(root.path("funcionario").path("Nome_Foto").asText());
+            LoginResponse res = new LoginResponse(token, funcionario);
 
-           }
-
-           ps.close();
-           rs.close();
-       } catch (SQLException e){
-           System.out.println(e);
-       } catch (Exception e){
-
+           // salva token para não precisar logar de novo
+           SessionManager.salvar(res);
+                valicacao  = success;
+           // abre tela principal);
+       } else {
+           valicacao  = success;
        }
+
+} catch (Exception e) {
+}
        return valicacao;
    }
     public boolean verificar(TextField Cpf)  {
@@ -119,43 +144,69 @@ public class FuncionarioDao {
         return valicacao;
     }
     public ObservableList<Funcionario> ListaFuncionario( ) {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "SELECT * FROM  funcionarios";
         ObservableList<Funcionario> lista = FXCollections.observableArrayList();
-        try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()){
-                Funcionario funcionario = new Funcionario();
-                funcionario.setId_Fun(rs.getString("idFuncionarios"));
-                funcionario.setNome_Fun( rs.getString("Nome_Fun"));
-                funcionario.setSenha_fun( rs.getString("Senha_Fun"));
-                funcionario.setTipo_Fun( rs.getString("Tipo_Fun"));
-                funcionario.setCpf_Fun(   rs.getString("Cpf_Fun"));
+        HttpClient client = HttpClient.newHttpClient();
 
-                funcionario.setNome_Foto(rs.getString("Nome_Foto"));                        ;
-                lista.add(funcionario);
-                Blob blob = rs.getBlob("Foto_Fun");
-                File pasta = new File("Fotos_Fun");
-                String caminho = pasta.getAbsolutePath()    ;
-                System.out.println(caminho);
-                if(blob != null){
-                    InputStream inputStream = blob.getBinaryStream();
-                    Files.copy(inputStream, Paths.get(caminho+"\\"+funcionario.getNome_Foto()), StandardCopyOption.REPLACE_EXISTING);
+        String json = """
+{
+  "query": "query { TodosFun { Id_Funcionarios Nome_Fun Tipo_Fun Senha_Fun CPF_Fun Nome_Foto } }"
+}
+""";
+
+
+    try{
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("http://192.168.3.89:5000/graphql"))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            HttpResponse<String> response =
+                    client.send(request, HttpResponse.BodyHandlers.ofString());
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode data = objectMapper.readTree(response.body()).get("data").get("TodosFun");
+    for (JsonNode node : data){
+        Funcionario f = new Funcionario();
+        f.setId_Fun(node.get("Id_Funcionarios").asText());
+        f.setNome_Fun(node.get("Nome_Fun").asText());
+        f.setSenha_fun(node.get("Senha_Fun").asText());
+        f.setCpf_Fun(node.get("CPF_Fun").asText());
+        f.setTipo_Fun(node.get("Tipo_Fun").asText());
+        f.setNome_Foto(node.get("Nome_Foto").asText());
+
+        lista.add(f);
+        if(f.getNome_Foto() != null && !f.getNome_Foto().isBlank()) {
+            String url = "http://192.168.3.89:5000/ImagemFuncionario/" + f.getId_Fun();
+            Path Pasta = Paths.get("Fotos_Fun");
+            if (!Files.exists(Pasta)) {
+                Files.createDirectories(Pasta);
+            }
+            Path destinno = Pasta.resolve(f.getNome_Foto());
+
+            if (!Files.exists(destinno)) {
+                try {
+                    InputStream in = new URL(url).openStream();
+                    Files.copy(in, destinno);
+                } catch (IOException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+
                 }
 
-
             }
+        }
+    }
 
-            ps.close();
-            rs.close();
-        }catch (IOException e){
-            System.out.println(e);
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
+
+} catch (Exception e){
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+alert.setTitle("Erro");
+alert.setHeaderText("Mensagem:");
+alert.setHeaderText(""+e);
+}
+
+
+
+
         return lista;
 
     }

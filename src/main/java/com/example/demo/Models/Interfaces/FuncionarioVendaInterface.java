@@ -28,7 +28,7 @@ public interface FuncionarioVendaInterface {
     public void Editar_consumo(String Id_Produto, int qtd, int estoques);
     public void excluir_consumo(String Id_produto, int qtd);
     public  void Adicionar_Consumo(String Cod_Produto, int qtd, int TotalEstoques);
-    public void finalizar();
+    public boolean finalizar();
     void CarregarTabela(Vendas vendas);
     public double TotalConsumo();
     public void pararThread();

@@ -26,14 +26,12 @@ public class CalcularPorPernoiteService implements Calcular {
             if (dateTime.isBefore(DataP) && (Hora_Saida.isAfter(DataP) || DataP.isBefore(Hora_Saida))) {
                 int minutop = (int) ChronoUnit.MINUTES.between(DataP, Hora_Saida);
                 System.out.print(minutop + "\n\n");
-                if ((minutop >= 15 || minutop <= 60) && minutop < 480) {
+                if ((minutop >= config.getTolerancia() || minutop <= 60) && minutop < 480) {
                     ValorPernoite = ValorPernoite + (config.getPernoite_valor() / 2);
 
                 } else if (minutop > 480) {
                     ValorPernoite = ValorPernoite + config.getPernoite_valor();
                 }
-            } else {
-                ValorPernoite = 70.00;
             }
 
         }
@@ -54,14 +52,14 @@ public class CalcularPorPernoiteService implements Calcular {
         double ValorTotal = 0.0;
         int min = (int) (ChronoUnit.MINUTES.between(Hora_entrada, Hora_Saida));
         MostrarDuraçãoHoras(duracao,min);
-            if (15 > min){
+            if (config.getTolerancia() > min){
                 botao.setText("Cancelar");
                 botao.setStyle("-fx-background-color: red;");
             }
             else if (min > minduracao && mintotal>=min  ) {
          ValorTotal = config.getPernoite_valor();
             } else {
-                if (min >= 15 && 60>=min) {
+                if (min >= config.getTolerancia() && 60>=min) {
                     botao.setText("Finalizar");
                     botao.setStyle("-fx-background-color:  linear-gradient(to left, #6441a5, #2a0845);");
                     ValorTotal = config.getPrimeiraHora_valor();

@@ -1,10 +1,20 @@
 package com.example.demo.Models.Dao;
 
+import com.example.demo.Models.Api.GlobalApi;
 import com.example.demo.Models.Classes.*;
 import com.example.demo.Models.Database.Conexao;
+import com.example.demo.Models.Graphqls.Vendas.Query;
+import com.example.demo.Util.MensagemVenda;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,29 +25,37 @@ import java.util.Date;
 
 public class VendaDao {
 
-    public ObservableList<Vendas> CodigodoVenda()  {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "SELECT idVendas FROM  vendas order by idVendas asc;";
+    Query queryG = new Query();
+    GlobalApi globalApi  = new GlobalApi();
+    Funcionario funcionari =  new Funcionario();
+    MensagemVenda mensagemVenda = new MensagemVenda();
+    public String CodigodoVenda() {
+        String cod = "";
+        String json = """
+    {
+      "query": "query { NumeroProximoLivre }"
+    }
+    """;
 
-        ObservableList<Vendas> lista = FXCollections.observableArrayList();
+        HttpClient client = HttpClient.newHttpClient();
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()){
-                Vendas vendas= new Vendas();
-                vendas.setCod_venda(rs.getString("idVendas"));
-                lista.add(vendas);
+
+            HttpResponse<String> response = globalApi.Api(client,json);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode root = objectMapper.readTree(response.body());
+
+            JsonNode dataNode = root.path("data").path("NumeroProximoLivre");
+            if (!dataNode.isMissingNode()) {
+                cod = dataNode.asText();
+                System.out.println("Código da venda: " + cod);
+            } else {
+                System.out.println("Resposta inesperada: " + response.body());
             }
-            ps.close();
-            rs.close();
-        }catch (SQLException e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        return lista;
-
+        return cod;
     }
     public Double VendaporFuncionario(LocalDate Data_inicio, LocalDate Data_Fim, String Nome_Fun)  {
         PreparedStatement ps = null;
@@ -413,57 +431,77 @@ public class VendaDao {
     }
 
 
-    public void BuscarRealizando(Quarto quarto, Vendas vendas,Funcionario funcionario)  {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "SELECT vendas.idVendas, funcionarios.Nome_Fun, quartos.num_quartos, vendas.Data_início \n" +
-                "from vendas inner join quartos on vendas.id_quartos = quartos.idquartos  \n" +
-                "inner join funcionarios on vendas.id_fun = funcionarios.idFuncionarios WHERE vendas.id_quartos = "+quarto.getCod_Quarto()+" and vendas.Status=\"Realizando\"; ";
-
-
+    public void BuscarRealizando( Vendas vendas)  {
+        String query = queryG.BuscarRealizando.formatted(vendas.getQuarto().getCod_Quarto());
+        String compactQuery = query.replace("\n", " ").replace("\r", " ");
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+        HttpClient client = HttpClient.newHttpClient();
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()){
-                vendas.setCod_venda(rs.getString("vendas.idVendas"));
-                funcionario.setNome_Fun(rs.getString("funcionarios.Nome_Fun"));
-                Timestamp timestamp = rs.getTimestamp("vendas.Data_início");
-                vendas.setData_hora_Entrada(timestamp.toLocalDateTime());
+            HttpResponse<String> response = globalApi.Api(client,json);
+            ObjectMapper mapper =  new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("VendaPorQuartoRealizando");
+            vendas.setCod_venda(data.get("IdVendas").asText());
+            LocalDateTime inicio = LocalDateTime.parse(data.get("dataEntrada").asText());
+            funcionari.setId_Fun(data.get("Funcionario").get("Id_Funcionarios").asText());
+            funcionari.setNome_Fun(data.get("Funcionario").get("Nome_Fun").asText());
+            vendas.setFuncionario(funcionari);
+                vendas.setData_hora_Entrada(inicio);
 
-            }
-            ps.close();
-            rs.close();
-        }catch (SQLException e){
-            e.printStackTrace();
+        }catch (Exception e){
+        System.out.println(e.getMessage());
         }
+
+
 
 
 
 
     }
-    public void cadastrar(Funcionario funcionario, Vendas vendas, Quarto quarto) {
-        String sql = "INSERT INTO vendas(idVendas,id_fun,id_quartos,Data_início,Status)" +
-                "  VALUES(?,?,?,?,?)";
-        PreparedStatement ps = null;
+    public void cadastrar( Vendas vendas) {
+        String DataEntrada = "";
+        DataEntrada = DataEntrada + vendas.getData_hora_Entrada();
+        String DataSaida = "";
+             if (vendas.getData_hora_Saida() != null) {
+                 DataSaida = "" + vendas.getData_hora_Saida();
+        }
 
+        String query = """
+mutation {
+  AtualizarVenda(inputVenda: {
+    idVenda: "%s",
+    idFun: "%s",
+    idQuarto: "%s",
+    Data_Inicio: "%s",
+    Data_fim: "%s",
+    Status: "%s",
+    Total: %s,
+    Pagamento: "%s"
+  })
+}
+""".formatted(
+                vendas.getCod_venda(),
+                vendas.getFuncionario().getId_Fun(),
+                vendas.getQuarto().getCod_Quarto(),
+                DataEntrada,
+                DataSaida,
+                vendas.getStatus(),
+                vendas.getTotal(),
+                vendas.getPagamento()
+        );
+
+// Remove quebras de linha para caber no JSON
+        String compactQuery = query.replace("\n", " ").replace("\r", " ");
+
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+        HttpClient client = HttpClient.newHttpClient();
 
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setString(1, vendas.getCod_venda());
-            ps.setString(2, funcionario.getId_Fun());
-            ps.setInt(3, quarto.getCod_Quarto());
-            ps.setObject(4, LocalDateTime.now());
-            ps.setString(5, "Realizando");
-            ps.execute();
-            ps.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sucesso");
-            alert.setHeaderText("Aviso:");
-            alert.setContentText("Foi cadastrado com sucesso");
-            alert.showAndWait();
+            HttpResponse<String> response = globalApi.Api(client,json);
+
+            mensagemVenda.Mensagem(vendas.getStatus());
 
         }
-        catch (SQLException e) {
+        catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
@@ -485,50 +523,8 @@ public class VendaDao {
             // TODO: handle exception
         }
     }
-    public void finalizar(Vendas vendas){
 
-        String sql = "UPDATE vendas SET Data_fim = ?,Total = ?, Status = ? where idVendas = ?";
-        PreparedStatement ps = null;
 
-        try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setObject(1,LocalDateTime.now());
-            ps.setDouble(2, vendas.getTotal());
-            ps.setString(3,vendas.getStatus());
-            ps.setString(4,vendas.getCod_venda());
-
-            ps.execute();
-            ps.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sucesso");
-            alert.setHeaderText("Aviso:");
-            alert.setContentText("Foi finalizado com sucesso");
-            alert.showAndWait();
-
-        } catch (SQLException e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-    }
-    public void Cancelado(Vendas vendas){
-
-        String sql = "UPDATE vendas SET Data_fim = ?, Status = ? where idVendas = ?";
-        PreparedStatement ps = null;
-        String cancelado = "Cancelado";
-        try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setObject(1,LocalDateTime.now());
-            ps.setString(2,cancelado);
-            ps.setString(3,vendas.getCod_venda());
-
-            ps.execute();
-            ps.close();
-
-        } catch (SQLException e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-    }
     public void EditarVParaFinalizado(Vendas vendas){
 
         String sql = "UPDATE vendas SET Data_fim = ?,  id_quartos = ?, Total = ? , Status = ? where idVendas = ?";

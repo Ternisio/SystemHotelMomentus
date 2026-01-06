@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b2110981-0f2f-4014-ba71-e08e9e8ca444" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/artifacts/demo_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/GNAvatarView_1_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Javafx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_xml_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_6_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__com_github_librepdf_openpdf_1_3_30_jaspersoft_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__commons_digester_commons_digester_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__io_github_Gleidson28_GNAvatarView_1_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__net_sf_jasperreports_jasperreports_6_20_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_apache_commons_commons_collections4_4_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_4_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_eclipse_jdt_ecj_3_21_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_gillius_jfxutils_0_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_jfree_jcommon_1_0_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_jfree_jfreechart_1_0_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_base_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_base_win_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_controls_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_controls_win_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_fxml_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_fxml_win_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_graphics_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_openjfx_javafx_graphics_win_20_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/mysql_connector_j_8_0_33.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/GNAvatarView-1.0.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/jar_files.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/jasperreports-6.21.0-project.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/jasperreports-6.21.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-console-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-console-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-datetime-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-debug-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-errorhandling-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-file-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-file-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-file-l2-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-handle-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-heap-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-interlocked-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-libraryloader-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-localization-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-memory-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-namedpipe-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-processenvironment-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-processthreads-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-processthreads-l1-1-1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-profile-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-rtlsupport-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-string-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-synch-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-synch-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-sysinfo-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-timezone-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-core-util-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-conio-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-convert-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-environment-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-filesystem-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-heap-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-locale-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-math-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-multibyte-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-private-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-process-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-runtime-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-stdio-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-string-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-time-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/api-ms-win-crt-utility-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/decora_sse.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/fxplugins.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/glass.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/glib-lite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/gstreamer-lite.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/javafx_font.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/javafx_iio.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/jfxmedia.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/jfxwebkit.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/msvcp140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/msvcp140_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/msvcp140_2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/prism_common.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/prism_d3d.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/prism_sw.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/ucrtbase.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/vcruntime140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/bin/vcruntime140_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.base/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.base/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.base/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.controls/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.controls/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.fxml/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.fxml/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.graphics/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.graphics/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.graphics/jpeg_fx.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.graphics/mesa3d.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.media/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.media/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.media/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.media/directshow.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.media/glib.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.media/gstreamer.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.media/libffi.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.swing/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.swing/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.web/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.web/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.web/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.web/icu_web.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.web/libxml2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.web/libxslt.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/legal/javafx.web/webkit.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx-swt.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.base.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.controls.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.fxml.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.graphics.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.media.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.swing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/lib/javafx.web.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/javafx-sdk-20.0.1/src.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/jdk-20_windows-x64_bin.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/jfoenix-19.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/jfoenix-8.0.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/jfoenix.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Lib/mysql-connector-j-8.0.33.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../artifacts/Motelmomentus_jar/Run.bat.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../demo.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../demo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../demo.userlibraries" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/BtnBotoesQuartos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/ConsumoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/Consumo_VendaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/ControllerDashboard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/ControllerEditar_venda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/ControllerLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/ControllerTelaFuncionario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Controllers/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Classes/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Classes/Consumo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Classes/Despesa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Classes/Funcionario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Classes/Produto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Classes/Quarto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Classes/Vendas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/ConexaoRede/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/ConexaoRede/ClienteConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/ConexaoRede/Servidor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Dao/ConfigDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Dao/ConsumoDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Dao/DespesaDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Dao/FuncionarioDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Dao/ProdutoDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Dao/QuartoDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Dao/VendaDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Database/Conexao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/AdminConfigInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/AdminFuncionarioInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/AdminProdutoInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/AdminQuartoInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/Calcular.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/LoginInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/MeuClick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Interfaces/VendaInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/AdminConfigService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/AdminDespesaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/AdminFuncionarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/AdminProdutoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/AdminQuartoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/AdminVendaPorProdutos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/CalcularPorHoraService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/CalcularPorHoraServiceEditar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/CalcularPorPernoiteService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/CalcularPorPernoiteServiceEditar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/ConsumoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/ExecutarRelatorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/FunQuatoVendaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/Relatorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/ServiceRelatorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/VendaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Models/Services/VendaServiceFun.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/example/demo/Util/MaskFieldUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/CSS/LOGIN.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_Fun/81206281_621732765298342_2247954559529910272_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_Fun/foto-one-piece.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_Fun/luffy-one-piece.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_Fun/wallpaperflare.com_wallpaper (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/00065600001_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/002693-omie___coca-cola-1500ml__conv-1000x1000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/035_Bebidas.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/12840568.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/1885-refrigerante-guarana-antarctica-2l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/197-thickbox_default.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/2310943514_b33e9ee6c5_c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/277814-original.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/299.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/34a0d14888a41ed42dac4de4f432aa29.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/3601-ice-smirnoff-long-neck-275ml.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/41-Sg2kCoEL._SR600,315_PIWhiteStrip,BottomLeft,0,35_SCLZZZZZZZ_FMpng_BG255,255,255.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/6203-rum-montilla-limao-dose.jpg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/71c2e7jl2QL.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/AN-batata-frita-batatas-fritas-e1567610355261.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/COPO-TRADICIONAL-1000x1279px_DSC3082.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Champagner cereser.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Conhaque são joão da barra(dose).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Conservar-o-Suco-Natural-Fresco-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Frango_passarinho-585x585.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Johnnie walk.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Pipoca-de-Microondas-Yoki-Manteiga-100g.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Receita-de-Sanduíche-de-Queijo-Quente.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Rum-Montilla-Carta-Branca-dose.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/Rum-Montilla-Carta-Ouro-dose.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/WIN_20220112_14_56_33_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/agua-mineral-cristal-sem-gas-1500-ml1-49de8837a12bf1afa915676920782107-480-0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/agua-mineral-crystal-natural-com-gas-500ml-e28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/b-46c24f1cb4ba4709840a6cf1c88b05fc.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/cachaca-lata-473ml-pitu-un.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/cafe-com-leite-Gabe-Raggio-Pixabay-970x550-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/campari(1L).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/campari(dose).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/cerveja skol 350ml.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/cerveja-devassa-600ml1-3823b5acbc54c257dc15912997313160-640-0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/cerveja-heineken-600-ml1-b4723f8fa38b73d53b15676918580599-640-0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/conhaque-alcatrão-800x800.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/file com farofa e vinagrete.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/foto_large.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/galo-imagem-receitas-lasanha-de-frango-share.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/gui.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/hamburguer-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/imagem_2022-03-10_163025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/istock-1312825752-todfaey1d7w5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/istockphoto-105707866-612x612.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/lasanha a bolonesa.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/maxresdefault.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/misto-quente-receita-1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/novored-600x600.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/p-98.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/pao de ovo.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/popup-img-360x217.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/ref-pepsi-2l-7892840800000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/transferir.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/usuario-2024-1ad9369edbeb228f064158ebfa6ae528.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/vinho quinta do morgado 750ml.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/vinho quinta do morgado taça.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/vitamina_de_frutas_com_leite_condensado_9955_600_square.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/wallpaperflare.com_wallpaper (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/wallpaperflare.com_wallpaper (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Fotos_prod/whisky-escoces-old-parr-1l_87086.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/Disponível.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/Ocupado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/Sem Titulo-1-Recuperado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/Sujo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/bed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/botao-de-inicio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/botao-voltar-branco.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/botao-voltar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/cama-de-casal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/coin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/compras.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/despesa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/dollar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/double-bed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/employee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/enter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/loan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/manutencao.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/products.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/relatorio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/remover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/restaurant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/user-interface.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Imagens/verifica.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Relatorios/Imagens/Sem Titulo-1-Recuperado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Relatorios/RelatoriodeVendas.jasper" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/Relatorios/RelatoriodeVendas.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/com/example/demo/Views/Btn_botoes_quartos.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/com/example/demo/Views/Editar_vendas.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/com/example/demo/Views/Login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/com/example/demo/Views/TelaAdministrador.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/com/example/demo/Views/Tela_Consumo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/com/example/demo/Views/Tela_Consumo_Venda.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/com/example/demo/Views/Tela_funcionario.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/CSS/LOGIN.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_Fun/81206281_621732765298342_2247954559529910272_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_Fun/foto-one-piece.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_Fun/luffy-one-piece.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_Fun/wallpaperflare.com_wallpaper (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/00065600001_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/002693-omie___coca-cola-1500ml__conv-1000x1000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/035_Bebidas.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/12840568.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/1885-refrigerante-guarana-antarctica-2l.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/197-thickbox_default.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/2310943514_b33e9ee6c5_c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/277814-original.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/299.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/34a0d14888a41ed42dac4de4f432aa29.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/3601-ice-smirnoff-long-neck-275ml.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/41-Sg2kCoEL._SR600,315_PIWhiteStrip,BottomLeft,0,35_SCLZZZZZZZ_FMpng_BG255,255,255.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/6203-rum-montilla-limao-dose.jpg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/71c2e7jl2QL.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/AN-batata-frita-batatas-fritas-e1567610355261.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/COPO-TRADICIONAL-1000x1279px_DSC3082.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Champagner cereser.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Conhaque são joão da barra(dose).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Conservar-o-Suco-Natural-Fresco-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Frango_passarinho-585x585.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Johnnie walk.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Pipoca-de-Microondas-Yoki-Manteiga-100g.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Receita-de-Sanduíche-de-Queijo-Quente.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Rum-Montilla-Carta-Branca-dose.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/Rum-Montilla-Carta-Ouro-dose.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/WIN_20220112_14_56_33_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/agua-mineral-cristal-sem-gas-1500-ml1-49de8837a12bf1afa915676920782107-480-0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/agua-mineral-crystal-natural-com-gas-500ml-e28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/b-46c24f1cb4ba4709840a6cf1c88b05fc.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/cachaca-lata-473ml-pitu-un.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/cafe-com-leite-Gabe-Raggio-Pixabay-970x550-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/campari(1L).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/campari(dose).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/cerveja skol 350ml.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/cerveja-devassa-600ml1-3823b5acbc54c257dc15912997313160-640-0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/cerveja-heineken-600-ml1-b4723f8fa38b73d53b15676918580599-640-0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/conhaque-alcatrão-800x800.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/file com farofa e vinagrete.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/foto_large.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/galo-imagem-receitas-lasanha-de-frango-share.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/gui.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/hamburguer-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/imagem_2022-03-10_163025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/istock-1312825752-todfaey1d7w5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/istockphoto-105707866-612x612.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/lasanha a bolonesa.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/maxresdefault.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/misto-quente-receita-1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/novored-600x600.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/p-98.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/pao de ovo.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/popup-img-360x217.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/ref-pepsi-2l-7892840800000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/transferir.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/usuario-2024-1ad9369edbeb228f064158ebfa6ae528.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/vinho quinta do morgado 750ml.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/vinho quinta do morgado taça.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/vitamina_de_frutas_com_leite_condensado_9955_600_square.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/wallpaperflare.com_wallpaper (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/wallpaperflare.com_wallpaper (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Fotos_prod/whisky-escoces-old-parr-1l_87086.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/Disponível.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/Ocupado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/Sem Titulo-1-Recuperado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/Sujo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/bed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/botao-de-inicio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/botao-voltar-branco.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/botao-voltar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/cama-de-casal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/coin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/compras.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/despesa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/dollar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/double-bed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/employee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/enter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/loan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/manutencao.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/products.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/relatorio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/remover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/restaurant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/user-interface.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Imagens/verifica.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Relatorios/Imagens/Sem Titulo-1-Recuperado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Relatorios/RelatoriodeVendas.jasper" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/Relatorios/RelatoriodeVendas.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/BtnBotoesQuartos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/ConsumoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/Consumo_VendaController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/ControllerDashboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/ControllerEditar_venda.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/ControllerLogin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/ControllerTelaFuncionario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Controllers/HelloController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/HelloApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Classes/Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Classes/Consumo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Classes/Despesa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Classes/Funcionario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Classes/Produto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Classes/Quarto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Classes/Vendas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/ConexaoRede/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/ConexaoRede/ClienteConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/ConexaoRede/Servidor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Dao/ConfigDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Dao/ConsumoDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Dao/DespesaDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Dao/FuncionarioDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Dao/ProdutoDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Dao/QuartoDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Dao/VendaDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Database/Conexao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/AdminConfigInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/AdminFuncionarioInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/AdminProdutoInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/AdminQuartoInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/Calcular.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/LoginInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/MeuClick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Interfaces/VendaInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminConfigService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminDespesaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminFuncionarioService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminProdutoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminQuartoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminVendaPorProdutos$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminVendaPorProdutos$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminVendaPorProdutos$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/AdminVendaPorProdutos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/CalcularPorHoraService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/CalcularPorHoraServiceEditar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/CalcularPorPernoiteService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/CalcularPorPernoiteServiceEditar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/ConsumoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/ExecutarRelatorio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/FunQuatoVendaService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/FunQuatoVendaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/LoginService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/Relatorio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/ServiceRelatorio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaService$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaService$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaServiceFun$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaServiceFun$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaServiceFun$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaServiceFun$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaServiceFun$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaServiceFun$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Models/Services/VendaServiceFun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$5$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Util/MaskFieldUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Views/Btn_botoes_quartos.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Views/Editar_vendas.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Views/Login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Views/TelaAdministrador.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Views/Tela_Consumo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Views/Tela_Consumo_Venda.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/demo/Views/Tela_funcionario.fxml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="36ll2QBSZwwe3LAX6hsPJoMz0mt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Motel Momentus/Documents/ProjectJava/SystemHotelMomentus/src/main/java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.HelloApplication" />
+      <module name="main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Motel Momentus\Documents\ProjectJava\SystemHotelMomentus\Lib\javafx-sdk-21\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b2110981-0f2f-4014-ba71-e08e9e8ca444" name="Changes" comment="" />
+      <created>1765588830955</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765588830955</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -61,9 +61,6 @@ public class ConsumoService implements FuncionarioVendaInterface {
     @Override
     public void limparTabela() {}
 
-    public void finalizar(){
-
-    }
     public void CarregarTabela(Vendas vendas){
         this.vendas = vendas;
         ListaConsumo = consumoDao.ListaConsumo(vendas);
@@ -91,9 +88,15 @@ public class ConsumoService implements FuncionarioVendaInterface {
             CarregarTabela(vendas);
         }
     }
+
+    @Override
+    public boolean finalizar() {
+        return false;
+    }
+
     @Override
     public void Cadastro(Vendas vendas, Quarto quarto, Funcionario funcionario) {
-        vendaDao.cadastrar(funcionario,vendas,quarto);
+     //   vendaDao.cadastrar(funcionario,vendas,quarto);
 
     }
 

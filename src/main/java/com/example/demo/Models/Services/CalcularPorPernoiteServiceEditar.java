@@ -65,12 +65,12 @@ public class CalcularPorPernoiteServiceEditar implements Calcular {
 
         int  min = (int) ChronoUnit.MINUTES.between(EntradaDataHora,SaidaDataHora);
         MostrarDuraçãoHoras(duracao,min);
-        if (((min >= 15 & 70 >=min) )){
+        if (((min >= config.getTolerancia() & 70 >=min) )){
             ValorPernoite = ValorPernoite + (config.getPernoite_valor()/2);
         } else if (min>480 && EntradaDataHora.isBefore(DataPPF) && SaidaDataHora.isBefore(DataPF)) {
             ValorPernoite = ValorPernoite + config.getPernoite_valor();
-        }else if((EntradaDataHora.getHour() == 0 || EntradaDataHora.getHour() == 1) && SaidaDataHora.isBefore(DataPF.plusHours(1))){
-            ValorPernoite = ValorPernoite + (config.getPernoite_valor() - 5);
+        }else if((EntradaDataHora.getHour() == tpM.getHour() || EntradaDataHora.getHour() == tpM.getHour() + 1 ) && SaidaDataHora.isBefore(DataPF.plusHours(1))){
+            ValorPernoite = ValorPernoite + (config.getPernoite_valor() );
         } else if ((EntradaDataHora.isAfter(DataPPF)  & EntradaDataHora.getHour() == 2 & SaidaDataHora.isBefore(DataPF) )  ){
             ValorPernoite = ValorPernoite + config.getPernoite_valor();
         }else if((EntradaDataHora.getHour() == 0 || EntradaDataHora.getHour() == 1) && SaidaDataHora.isAfter(DataPF.plusHours(1))& SaidaDataHora.isBefore(DataPI)){
@@ -84,13 +84,13 @@ public class CalcularPorPernoiteServiceEditar implements Calcular {
             }
 
         }else if(SaidaDataHora.isAfter(DataPF)& min >= 720 & 1440>=min){
-        int horasT = (min - (12 * 60))/45;
+        int horasT = (int) ChronoUnit.MINUTES.between(SaidaDataHora,DataPF)/config.getDuracaoTaxaAdicional();
         double valor_cada_hora = config.getValor_cada_hora();
         ValorPernoite = config.getPernoite_valor() + (valor_cada_hora*horasT);
         }
             else if(min >= 1440 ){
-            int qtspernoites= (min/60)/12;
-            int horastrabalhadas = (min/60)-(12 * qtspernoites + 2);
+            int qtspernoites= (min/ config.getDuracaoTaxaAdicional())/12;
+            int horastrabalhadas = (min/config.getDuracaoTaxaAdicional())-(12 * qtspernoites + 2);
 
 
             double pernoitestrabalhadas = ValorPeriodoDiaria(EntradaDataHora, SaidaDataHora, config);

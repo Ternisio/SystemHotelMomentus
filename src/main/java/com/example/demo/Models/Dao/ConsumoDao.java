@@ -1,10 +1,14 @@
 package com.example.demo.Models.Dao;
 
+import com.example.demo.Models.Api.GlobalApi;
 import com.example.demo.Models.Classes.Config;
 import com.example.demo.Models.Classes.Consumo;
 import com.example.demo.Models.Classes.Produto;
 import com.example.demo.Models.Classes.Vendas;
 import com.example.demo.Models.Database.Conexao;
+import com.example.demo.Models.Graphqls.Consumo.Query;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -13,12 +17,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.http.HttpClient;
+import java.net.http.HttpResponse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class ConsumoDao {
+    Query ConsumoQuery = new Query();
+    GlobalApi api = new GlobalApi();
     public void cadastrar( Vendas vendas, String Cod_produto, int qtd) {
         String sql = "INSERT INTO consumo(id_venda, id_produto, Quantidade, data_Consumo_Produto)" +
                 "  VALUES(?,?,?,?)";
@@ -45,29 +53,28 @@ public class ConsumoDao {
         }
     }
     public ObservableList<Consumo> ListaConsumo(Vendas vendas){
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "SELECT consumo.idConsumo, produtos.idProdutos, produtos.Nome_prod, produtos.Valor_prod, consumo.Quantidade \n" +
-                "                from consumo inner join produtos on consumo.id_produto = produtos.idProdutos \n" +
-                "                WHERE consumo.id_venda = ?";
-        ObservableList<Consumo> lista = FXCollections.observableArrayList();
+
+        String query = ConsumoQuery.ListaPorCliente.formatted(vendas.getCod_venda());
+                ObservableList<Consumo> lista = FXCollections.observableArrayList();
+        HttpClient client = HttpClient.newHttpClient();
+        String compactQuery = query.replace("\n", " ").replace("\r", " ");
+
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+
+
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setString(1,vendas.getCod_venda());
-            rs = ps.executeQuery();
-            while (rs.next()){
-                Consumo consumo =  new Consumo(rs.getInt("consumo.idConsumo"), rs.getString("produtos.idProdutos"),
-                        rs.getString("produtos.Nome_prod"), String.format("%.2f",rs.getFloat("produtos.Valor_prod")).replace(".",","),
-                        rs.getInt("consumo.Quantidade") );
+            HttpResponse<String> response = api.Api(client,json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("TodosConsumosPorIdVenda");
 
-
-
-
+            for(JsonNode res : data){
+                Consumo consumo =  new Consumo(res.get("Id_Consumo").asInt(), res.get("IdProduto").get("idProduto").asText(),
+                        res.get("IdProduto").get("nome").asText(), String.format("%.2f", res.get("IdProduto").get("valor").asDouble()).replace(".",","),
+                        res.get("Quantidade").asInt());
                 lista.add(consumo);
             }
-            rs.close();
-            ps.close();
-        }catch (SQLException e){
+            }
+                    catch (Exception e){
             e.printStackTrace();
         }
         return lista;

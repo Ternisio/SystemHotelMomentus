@@ -117,7 +117,7 @@ private FuncionarioVendaInterface funcionarioVendaInterface;
 
             if (produto.getFoto() != null) {
 
-                Image imagem = new Image(String.valueOf(new File("/Fotos_prod/" + produto.getFoto())));
+                Image imagem = new Image( produto.getFoto());
                 ImagemFoto.setImage(imagem);
             } else {
                 Image imagem = new Image("/Imagens/products.png");

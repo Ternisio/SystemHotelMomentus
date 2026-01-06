@@ -18,6 +18,8 @@ import javafx.scene.layout.*;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.OptionalInt;
 import java.util.ResourceBundle;
@@ -127,9 +129,9 @@ private FuncionarioVendaInterface funcionarioVendaInterface;
             produto.setFoto(coluna_foto_Produto.getCellData(index));
 
             if (produto.getFoto() != null) {
-
-                Image imagem = new Image(String.valueOf(new File("/Fotos_prod/" + produto.getFoto())));
+                    Image imagem = new Image(produto.getFoto());
                 ImagemFoto.setImage(imagem);
+
             } else {
                 Image imagem = new Image("/Imagens/products.png");
                 ImagemFoto.setImage(imagem);
