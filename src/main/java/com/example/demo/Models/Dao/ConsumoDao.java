@@ -6,7 +6,9 @@ import com.example.demo.Models.Classes.Consumo;
 import com.example.demo.Models.Classes.Produto;
 import com.example.demo.Models.Classes.Vendas;
 import com.example.demo.Models.Database.Conexao;
+import com.example.demo.Models.Graphqls.Consumo.Mutation;
 import com.example.demo.Models.Graphqls.Consumo.Query;
+import com.example.demo.Util.MensagemAlert;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
@@ -27,28 +29,21 @@ import java.time.LocalDate;
 public class ConsumoDao {
     Query ConsumoQuery = new Query();
     GlobalApi api = new GlobalApi();
+    Mutation mutationG = new Mutation();
+    MensagemAlert alert = new MensagemAlert();
     public void cadastrar( Vendas vendas, String Cod_produto, int qtd) {
-        String sql = "INSERT INTO consumo(id_venda, id_produto, Quantidade, data_Consumo_Produto)" +
-                "  VALUES(?,?,?,?)";
-        PreparedStatement ps = null;
-
+    String Mutation = mutationG.Consumo_add.formatted(vendas.getCod_venda(),Cod_produto,qtd, LocalDate.now());
+        String compactQuery = Mutation.replace("\n", " ").replace("\r", " ");
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+        HttpClient client = HttpClient.newHttpClient();
 
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setString(1, vendas.getCod_venda());
-            ps.setString(2,Cod_produto);
-            ps.setInt(3, qtd);
-            ps.setObject(4, LocalDate.now());
-            ps.execute();
-            ps.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sucesso");
-            alert.setHeaderText("Aviso:");
-            alert.setContentText("Foi salvo com sucesso");
-            alert.showAndWait();
 
-        } catch (SQLException e) {
+            HttpResponse<String> response = api.Api(client,json);
+
+        } catch (Exception e) {
             // TODO: handle exception
+            alert.MensagemError(""+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -75,30 +70,34 @@ public class ConsumoDao {
             }
             }
                     catch (Exception e){
+
+            alert.MensagemError(""+e.getMessage());
             e.printStackTrace();
         }
         return lista;
 
     }
-    public int Estoques(Vendas vendas, String Id_produto){
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql =" SELECT produtos.estoque_prod  from consumo inner join produtos on consumo.id_produto = produtos.idProdutos"+
-       " WHERE consumo.id_venda = ? and consumo.id_produto = ?";
-    int qtd_Estoques = 0;
+    public int Estoques( String Id_produto){
+        String query = ConsumoQuery.QuantidadeProduto.formatted(Id_produto);
+        String compactQuery = query.replace("\n", " ").replace("\r", " ");
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+        HttpClient client = HttpClient.newHttpClient();
+        int qtd_Estoques = 0;
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setString(1,vendas.getCod_venda());
-            ps.setString(2, Id_produto);
-            rs = ps.executeQuery();
-            while (rs.next()){
-             qtd_Estoques = rs.getInt("produtos.estoque_prod");
-            }
-        }catch (SQLException e){
+
+            HttpResponse<String> response = api.Api(client,json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("QuantidadeProduto");
+
+             qtd_Estoques = data.asInt();
+
+        }catch (Exception e){
+            String mensagem = "" + e.getMessage();
+            alert.MensagemError(mensagem);
             e.printStackTrace();
+
         }
         return qtd_Estoques;
-
     }
     public ObservableList<Produto> ListaConsumoDados(LocalDate Data_Inicio, LocalDate Data_fim, int Limite){
         PreparedStatement ps = null;
@@ -121,63 +120,62 @@ public class ConsumoDao {
 
     }
     public void editarProduto(String Cod_Produto, int Restantes){
-    String sql = "UPDATE produtos SET  estoque_prod= ? where idProdutos = ?";
-    PreparedStatement ps = null;
+    String Mutation = mutationG.AtualizarEstoques.formatted(Cod_Produto,Restantes);
+        HttpClient client = HttpClient.newHttpClient();
+        String compactQuery = Mutation.replace("\n", " ").replace("\r", " ");
+  String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
 
         try {
-        ps = Conexao.conectar().prepareStatement(sql);
-        ps.setInt(1, Restantes);
-        ps.setString(2, Cod_Produto);
-        ps.execute();
-        ps.close();
-
+            HttpResponse<String> response = api.Api(client,json);
 
     }
-        catch (SQLException e) {
+        catch (Exception e) {
         // TODO: handle exception
-        e.printStackTrace();
+            alert.MensagemError(""+e);
     }
 }
     public void editarConsumo(String Cod_Produto, int qtd, Vendas vendas){
-        String sql = "UPDATE consumo SET  Quantidade = ? where id_produto = ? and id_venda = ?";
-        PreparedStatement ps = null;
+
+        String Mutation = mutationG.Consumo_atual.formatted(vendas.getCod_venda(),Cod_Produto,qtd);
+        String compactQuery = Mutation.replace("\n", " ").replace("\r", " ");
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+        HttpClient client = HttpClient.newHttpClient();
 
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setInt(1, qtd);
-            ps.setString(2, Cod_Produto);
-            ps.setString(3, vendas.getCod_venda());
-            ps.execute();
-            ps.close();
+            HttpResponse<String> response = api.Api(client,json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("AtualizarConsumo");
+            
+            data : alert.MensagemSucess("Foi salvo com sucesso");
 
-
-        }
-        catch (SQLException e) {
+        } catch (Exception e) {
             // TODO: handle exception
-            e.printStackTrace();
+            alert.MensagemError(""+e);
+
         }
+
     }
     public void Excluir(Vendas vendas, String id_produto) {
-        String sql = "DELETE FROM consumo WHERE id_produto= ? and id_venda = ?";
-        PreparedStatement ps = null;
+
+        String Mutation = mutationG.Consumo_Excluir.formatted(vendas.getCod_venda(),id_produto);
+        String compactQuery = Mutation.replace("\n", " ").replace("\r", " ");
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+        HttpClient client = HttpClient.newHttpClient();
 
         try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            ps.setString(1, id_produto);
-            ps.setString(2, vendas.getCod_venda());
-            ps.execute();
-            ps.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sucesso");
-            alert.setHeaderText("Aviso:");
-            alert.setContentText("Foi excluido com sucesso");
-            alert.showAndWait();
+            HttpResponse<String> response = api.Api(client,json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("AtualizarConsumo");
+            
+            data : alert.MensagemSucess("Foi excluido com sucesso");
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             // TODO: handle exception
-            e.printStackTrace();
+            alert.MensagemError(""+e);
+
         }
-    }
+
+    }    
 
     public void ExcluirVenda(Vendas vendas) {
         String sql = "DELETE FROM consumo WHERE  id_venda = ?";

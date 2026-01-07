@@ -4,7 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0894e5b-50bc-482c-88dc-6ad2cc835493" name="Changes" comment="" />
+    <list default="true" id="f0894e5b-50bc-482c-88dc-6ad2cc835493" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ConsumoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ConsumoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Consumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Consumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/ConsumoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/ConsumoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/FuncionarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/FuncionarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/VendaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/VendaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Consumo/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Consumo/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/ConsumoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/ConsumoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ConsumoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/Consumo_VendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/Consumo_VendaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Classes/Consumo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Classes/Consumo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/ConsumoDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/ConsumoDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/FuncionarioDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/FuncionarioDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/VendaDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/ConsumoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/FunQuatoVendaService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/FunQuatoVendaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaService$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaService$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaServiceFun$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaServiceFun$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaServiceFun$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaServiceFun$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaServiceFun$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaServiceFun$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/VendaServiceFun.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +49,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -38,6 +74,9 @@
     &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
@@ -46,8 +85,18 @@
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.HelloApplication" />
-      <module name="demo2" />
+      <module name="demo" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\javafx\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.swing " />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

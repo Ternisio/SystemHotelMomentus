@@ -3,6 +3,7 @@ package com.example.demo.Models.Dao;
 import com.example.demo.Models.Api.GlobalApi;
 import com.example.demo.Models.Classes.*;
 import com.example.demo.Models.Database.Conexao;
+import com.example.demo.Models.Graphqls.Vendas.Mutation;
 import com.example.demo.Models.Graphqls.Vendas.Query;
 import com.example.demo.Util.MensagemVenda;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -28,6 +29,7 @@ public class VendaDao {
     Query queryG = new Query();
     GlobalApi globalApi  = new GlobalApi();
     Funcionario funcionari =  new Funcionario();
+    Mutation mutationG = new Mutation();
     MensagemVenda mensagemVenda = new MensagemVenda();
     public String CodigodoVenda() {
         String cod = "";
@@ -465,29 +467,7 @@ public class VendaDao {
                  DataSaida = "" + vendas.getData_hora_Saida();
         }
 
-        String query = """
-mutation {
-  AtualizarVenda(inputVenda: {
-    idVenda: "%s",
-    idFun: "%s",
-    idQuarto: "%s",
-    Data_Inicio: "%s",
-    Data_fim: "%s",
-    Status: "%s",
-    Total: %s,
-    Pagamento: "%s"
-  })
-}
-""".formatted(
-                vendas.getCod_venda(),
-                vendas.getFuncionario().getId_Fun(),
-                vendas.getQuarto().getCod_Quarto(),
-                DataEntrada,
-                DataSaida,
-                vendas.getStatus(),
-                vendas.getTotal(),
-                vendas.getPagamento()
-        );
+        String query = mutationG.Vendas_Cadastrar.formatted(vendas.getCod_venda(),vendas.getFuncionario().getId_Fun(),vendas.getQuarto().getCod_Quarto(),DataEntrada,DataSaida,vendas.getStatus(),vendas.getTotal(),vendas.getPagamento());
 
 // Remove quebras de linha para caber no JSON
         String compactQuery = query.replace("\n", " ").replace("\r", " ");

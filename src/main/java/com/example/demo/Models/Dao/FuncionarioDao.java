@@ -8,6 +8,7 @@ import com.example.demo.Models.Database.Conexao;
 import com.example.demo.Models.Services.SessionManager;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
@@ -33,11 +34,13 @@ import java.text.NumberFormat;
 
 public class FuncionarioDao {
     GlobalApi globalApi = new GlobalApi();
+    Dotenv dotenv = Dotenv.load();
+    String enderecoFotoFun = dotenv.get("ENDERECO_FOTO_FUN");
 
     public ObservableList<Funcionario> ConsultaPorNomeOuCodigodoFuncionario(String resultado ){
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM  funcionarios  WHERE Nome_Fun LIKE '%"+resultado+"%' OR idFuncionarios LIKE '%"+resultado+ "%'";
+        String sql = "SELECT * FROM  funcionarios  WHERE Nome _Fun LIKE '%"+resultado+"%' OR idFuncionarios LIKE '%"+resultado+ "%'";
 
         ObservableList<Funcionario> lista = FXCollections.observableArrayList();
         try {
@@ -155,14 +158,10 @@ public class FuncionarioDao {
 
 
     try{
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://192.168.3.89:5000/graphql"))
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(json))
-                    .build();
 
-            HttpResponse<String> response =
-                    client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            HttpResponse<String> response = globalApi.Api(client,json);
+
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode data = objectMapper.readTree(response.body()).get("data").get("TodosFun");
     for (JsonNode node : data){
@@ -176,7 +175,7 @@ public class FuncionarioDao {
 
         lista.add(f);
         if(f.getNome_Foto() != null && !f.getNome_Foto().isBlank()) {
-            String url = "http://192.168.3.89:5000/ImagemFuncionario/" + f.getId_Fun();
+            String url = enderecoFotoFun+"/" + f.getId_Fun();
             Path Pasta = Paths.get("Fotos_Fun");
             if (!Files.exists(Pasta)) {
                 Files.createDirectories(Pasta);

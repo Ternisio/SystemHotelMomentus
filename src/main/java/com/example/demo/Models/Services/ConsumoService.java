@@ -124,7 +124,7 @@ consumoDao.editarProduto(Id_Produto,estoques);
 
         int resultDialog =  JOptionPane.showOptionDialog(null,"Você quer excluir esse consumo: "+Nome,"Pergunta",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opc,opc[0]);
         if(resultDialog == JOptionPane.YES_OPTION) {
-            int qtd_estoques = consumoDao.Estoques(vendas, Id_produto);
+            int qtd_estoques = consumoDao.Estoques(Id_produto);
             int totalEstoques = qtd_estoques + qtd;
             consumoDao.editarProduto(Id_produto, totalEstoques);
             consumoDao.Excluir(vendas, Id_produto);

@@ -10,6 +10,7 @@ import com.example.demo.Models.Database.Conexao;
 import com.example.demo.Models.Interfaces.Calcular;
 import com.example.demo.Models.Interfaces.FuncionarioVendaInterface;
 import com.example.demo.Models.Interfaces.MeuClick;
+import com.example.demo.Util.MensagemAlert;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,7 +50,7 @@ public class FunQuatoVendaService implements FuncionarioVendaInterface {
     ConsumoDao consumoDao = new ConsumoDao();
   private   ObservableList<Quarto> ListaQuartoUI = null;
      private ControllerTelaFuncionario controllerTelaFuncionario;
-
+MensagemAlert alert = new MensagemAlert();
      public void pararThread(){
          PareD = true;
      }
@@ -318,10 +319,11 @@ consumoDao.editarProduto(Id_Produto,estoques);
 
     }
     public void excluir_consumo(String Id_produto, int qtd){
-     int qtd_estoques = consumoDao.Estoques(vendas, Id_produto);
+     int qtd_estoques = consumoDao.Estoques( Id_produto);
      int totalEstoques = qtd_estoques + qtd ;
  consumoDao.editarProduto(Id_produto,totalEstoques);
  consumoDao.Excluir(vendas,Id_produto);
+
         CarregarTabela(vendas);
         double Subtotal =total(vendas,config) + TotalConsumo();
         controllerTelaFuncionario.lbl_Total_Venda.setText(String.format("%.2f",Subtotal));

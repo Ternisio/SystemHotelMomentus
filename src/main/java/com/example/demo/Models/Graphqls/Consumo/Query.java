@@ -18,4 +18,11 @@ public class Query {
                         }
              
                     """;
+
+    public String QuantidadeProduto = """
+            query {
+ QuantidadeProduto(idProduto: "%s") 
+            }
+            
+            """;
 }

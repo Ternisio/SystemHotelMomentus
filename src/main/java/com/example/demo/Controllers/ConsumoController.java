@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.OptionalInt;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ConsumoController implements Initializable {
     @FXML
@@ -87,9 +88,9 @@ private FuncionarioVendaInterface funcionarioVendaInterface;
 
     }
     void CarregarTabelaProduto(String nome_produto) {
-        ObservableList<Produto> produtos = FXCollections.observableArrayList();
-        produtos = produtoDao.ConsultaPorNomeOuCodigodoProdutoCOMESTOQUES(nome_produto);
-        Tabela_consumo.setItems(produtos);
+        ObservableList<Produto> produtosP = FXCollections.observableArrayList();
+        produtosP = (ObservableList<Produto>) produtos.stream().filter(p-> p.getNome_prod().equalsIgnoreCase(nome_produto)|| p.getIdProduto().equalsIgnoreCase(nome_produto)).collect(Collectors.toList());
+        Tabela_consumo.setItems(produtosP);
 
     }
     public void Pesquisar(KeyEvent event){

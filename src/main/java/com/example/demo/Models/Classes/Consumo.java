@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.io.Serializable;
 
-public class Consumo extends Produto implements Serializable {
+public class Consumo extends Produto  {
     int idConsumo;
     int Qtd;
     String num_Quarto;
