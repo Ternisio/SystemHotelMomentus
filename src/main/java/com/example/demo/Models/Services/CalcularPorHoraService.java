@@ -191,20 +191,17 @@ return ValorTotal;
      String MostrarMinutos = "";
     int valorHoras = min/60;
     int valorMinutos = min%60;
-    if (9 > valorHoras){
-        MostrarHoras = "0"+ valorHoras;
+    int valorDias = valorHoras/24;
+    int valorHorasRestantes = valorHoras%24;
+
+    if (valorDias > 1){
+        duracao.setText(String.format("%d dias, %02d:%02d",valorDias,valorHorasRestantes,valorMinutos ));
+    }else if(valorDias == 1){
+        duracao.setText(String.format("%d dia, %02d:%02d",valorDias,valorHorasRestantes,valorMinutos ));
     }else{
-        MostrarHoras = MostrarHoras + valorHoras;
-
+        duracao.setText(String.format("%02d:%02d",valorHorasRestantes,valorMinutos ));
     }
-        if (9 > valorMinutos){
-            MostrarMinutos = "0"+ valorMinutos;
-        }else{
-            MostrarMinutos = MostrarMinutos + valorMinutos;
 
-        }
-
-        duracao.setText(MostrarHoras+":"+MostrarMinutos);
 
 
     }

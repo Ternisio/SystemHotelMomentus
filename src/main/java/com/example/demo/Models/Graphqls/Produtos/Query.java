@@ -14,4 +14,16 @@ public class Query {
                         }
     }
 """;
+    public String TodosProdutos = """
+        query {
+        TodosProdutos {
+                            idProduto
+                            nome
+                            valor
+                            quantidade
+                            categoria
+                            Nome_Foto
+                        }
+    }
+""";
 }

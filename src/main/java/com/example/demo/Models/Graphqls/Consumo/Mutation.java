@@ -6,9 +6,9 @@ public class Mutation {
          AtualizarConsumo(input: {
             IdVendas: "%s",
            IdProduto: "%s",
-           Quantidade: %s,
+           Quantidade: %s
              })
-         
+         }
          
          """;
 

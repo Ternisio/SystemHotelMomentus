@@ -20,6 +20,7 @@ import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.stream.Collectors;
 
 public class ProdutoDao {
     GlobalApi globalApi = new GlobalApi();
@@ -50,29 +51,36 @@ public class ProdutoDao {
 
     }
     public ObservableList<Produto> ConsultaPorNomeOuCodigodoProduto(String resultado ){
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "SELECT * FROM produtos WHERE Nome_prod LIKE '%"+resultado+"%' OR idProdutos LIKE '%"+resultado+ "%'";
-        ObservableList<Produto> lista = FXCollections.observableArrayList();
-        try {
-            ps = Conexao.conectar().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()){
-                Produto produto = new Produto();
-                produto.setIdProduto(rs.getString("idProdutos"));
-                produto.setNome_prod( rs.getString("Nome_prod"));
-                produto.setTipo_Produto(   rs.getString("tipo_prod"));
-                produto.setExibirValor( String.format("%.2f",rs.getFloat("Valor_prod")).replace(".",","));
-                produto.setEstoques(   rs.getInt("estoque_prod"));
-                produto.setFoto(rs.getString("Nome_foto"));
 
-                lista.add(produto);
-            }
-        }catch (SQLException e){
+        String query = queryProdutos.TodosProdutos;
+        String compactQuery = query.replace("\n", " ").replace("\r", " ");
+        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+
+        ObservableList<Produto> lista = FXCollections.observableArrayList();
+
+        ObservableList<Produto> listaPorNomeOuCodigo = FXCollections.observableArrayList();
+        HttpClient client = HttpClient.newHttpClient();
+        try {
+            HttpResponse<String> response = globalApi.Api(client,json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("TodosProdutos");
+            for (JsonNode rs : data){
+                Produto produto = new Produto();
+                produto.setIdProduto(rs.get("idProduto").asText());
+                produto.setNome_prod( rs.get("nome").asText());
+                produto.setTipo_Produto(   rs.get("categoria").asText());
+                produto.setExibirValor( String.format("%.2f",rs.get("valor").asDouble()).replace(".",","));
+                produto.setEstoques(   rs.get("quantidade").asInt());
+                produto.setFoto(rs.get("Nome_Foto").asText());
+
+                ;
+                lista.add(produto);}
+
+        }catch (Exception e){
             e.printStackTrace();
         }
-        return lista;
-
+        listaPorNomeOuCodigo = lista.stream().filter(produto -> produto.getNome_prod().contains(resultado) || produto.getIdProduto().contains(resultado)).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        return listaPorNomeOuCodigo;
     }
     public ObservableList<Produto> ConsultaPorComEstoques( ){
 
