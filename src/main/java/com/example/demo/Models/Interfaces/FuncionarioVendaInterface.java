@@ -10,6 +10,7 @@ import com.example.demo.Models.Dao.ConfigDao;
 import com.example.demo.Models.Dao.FuncionarioDao;
 import com.example.demo.Models.Dao.QuartoDao;
 import com.example.demo.Models.Dao.VendaDao;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -30,6 +31,7 @@ public interface FuncionarioVendaInterface {
     public  void Adicionar_Consumo(String Cod_Produto, int qtd, int TotalEstoques);
     public boolean finalizar();
     void CarregarTabela(Vendas vendas);
+    public ObservableList<Vendas> ListarVendas();
     public double TotalConsumo();
     public void pararThread();
     public void Cancelado();

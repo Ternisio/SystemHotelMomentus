@@ -8,9 +8,11 @@ import com.example.demo.Models.Dao.QuartoDao;
 import com.example.demo.Models.Interfaces.FuncionarioVendaInterface;
 import com.example.demo.Models.Interfaces.LoginInterface;
 import com.example.demo.Models.Services.LoginService;
+import com.example.demo.Models.Services.SessionManager;
 import com.example.demo.Util.MaskFieldUtil;
 import io.github.gleidson28.GNAvatarView;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -375,42 +377,70 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
             int resultDialog = JOptionPane.showOptionDialog(null, "Você deseja finalizar a venda ?", "Pergunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opc, opc[0]);
             if (resultDialog == JOptionPane.YES_OPTION) {
 
-            if (funcionarioVendai.finalizar()){
-                lbl_Datatime_Saida.setText("DD/mm/yyyy HH:MM");
-                lbl_Datatime_entrada.setText("DD/mm/yyyy HH:MM");
-                lbl_Nome_fun_venda.setText("Nome");
-                lbl_Duracao_Venda.setText("HH:MM");
-                lbl_Num_quarto.setText("00");
-                lbl_Total_Venda.setText("0,00");
-                funcionarioVendai.limparTabela();
-                pane_Lista_do_Quarto.setDisable(false);
-                pane_Detalhes_Venda.setDisable(true);}
+                if (funcionarioVendai.finalizar()){
+                    lbl_Datatime_Saida.setText("DD/mm/yyyy HH:MM");
+                    lbl_Datatime_entrada.setText("DD/mm/yyyy HH:MM");
+                    lbl_Nome_fun_venda.setText("Nome");
+                    lbl_Duracao_Venda.setText("HH:MM");
+                    lbl_Num_quarto.setText("00");
+                    lbl_Total_Venda.setText("0,00");
+                    funcionarioVendai.limparTabela();
+                    pane_Lista_do_Quarto.setDisable(false);
+                    pane_Detalhes_Venda.setDisable(true);}
             }
         }
         ;
     }
+@FXML
+public void aovoltarLogin(){
+    SessionManager.limpar();
+    funcionarioVendai.pararThread();
+    stage = (Stage) anchorPane.getScene().getWindow();
+    stage.close();
 
+    try {
+        Stage stage = new Stage();
+        HelloApplication main = new HelloApplication();
+        FuncionarioDao funcionarioDao = new FuncionarioDao();
+        LoginInterface loginInterface = new LoginService();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Views/Login.fxml"));
+        Parent root = loader.load();
+        ControllerLogin controllerLogin = loader.getController();
+        controllerLogin.inicial(main, funcionarioDao, loginInterface);
+        Scene scene = new Scene(root);
+        stage.setTitle("Sistema Do Motel");
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+}
     @FXML
     void Sair(MouseEvent event) {
-        funcionarioVendai.pararThread();
-        stage = (Stage) anchorPane.getScene().getWindow();
-        stage.close();
+        Object[] opcoes = {"Sim", "Não"};
+        int resultDialog = JOptionPane.showOptionDialog(null, "Você deseja fechar o caixa ?", "Pergunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+        if (resultDialog == JOptionPane.YES_OPTION) {
+        ObservableList<Vendas> vendas = funcionarioVendai.ListarVendas();
+        double totalPorDinheiro = vendas.stream().filter(venda -> venda.getPagamento().equals("Dinheiro")).mapToDouble(Vendas::getTotal).sum();
+        double totalPorCartao = vendas.stream().filter(venda -> venda.getPagamento().equals("Cartão")).mapToDouble(Vendas::getTotal).sum();
+        double totalPorPix = vendas.stream().filter(venda -> venda.getPagamento().equals("Pix")).mapToDouble(Vendas::getTotal).sum();
         try {
             Stage stage = new Stage();
-            HelloApplication main = new HelloApplication();
-            FuncionarioDao funcionarioDao = new FuncionarioDao();
-            LoginInterface loginInterface = new LoginService();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Views/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Views/Caixa.fxml"));
             Parent root = loader.load();
-            ControllerLogin controllerLogin = loader.getController();
-            controllerLogin.inicial(main, funcionarioDao, loginInterface);
+
+            ControllerCaixa controllerCaixa = loader.getController();
+            controllerCaixa.setControllerTelaFuncionario(this);
+            controllerCaixa.CarregarCaixa(totalPorDinheiro, totalPorCartao, totalPorPix);
             Scene scene = new Scene(root);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(btn_add_consumo.getScene().getWindow());
             stage.setTitle("Sistema Do Motel");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }}
     }
 
     @FXML
@@ -456,7 +486,7 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
                         Nova_senha_novamente.setText("");
                     }
                 }
-        } else {
+            } else {
                 if (Nova_Senha.getText().equals("")) {
                     try {
                         BufferedImage bufferedImage = ImageIO.read(filePerfil);
@@ -487,15 +517,15 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
                         Nova_senha_novamente.setText("");
                     }
                 }
-        }
-    }else {
+            }
+        }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Erro:");
             alert.setContentText("Por favor, preencha seu cpf corretamente");
             alert.showAndWait();
         }
-}
+    }
 
 
 }

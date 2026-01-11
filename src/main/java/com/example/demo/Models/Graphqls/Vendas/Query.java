@@ -22,4 +22,20 @@ public class Query {
                  }
              }
 """;
+
+    public String ListarVendas= """
+           query {
+                 TodosVendas(DataInicial:"%s",DataFinal:"%s") {
+                     IdVendas
+                     dataEntrada
+                     dataSaida
+                     valorTotal
+                     Forma_Pagamento
+                     Status
+                     
+                 }
+             }
+
+          """;
+
 }

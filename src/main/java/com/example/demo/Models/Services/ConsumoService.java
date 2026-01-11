@@ -71,6 +71,12 @@ public class ConsumoService implements FuncionarioVendaInterface {
         controllerEditar_venda.Tabela_Consumo_venda.setItems(ListaConsumo);
 
     }
+
+    @Override
+    public ObservableList<Vendas> ListarVendas() {
+        return null;
+    }
+
     public  void Adicionar_Consumo(String Cod_Produto, int qtd, int TotalEstoques){
         boolean Verificarexistir = VerificarExistir(Cod_Produto);
         if (Verificarexistir){

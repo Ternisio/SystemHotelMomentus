@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="f0894e5b-50bc-482c-88dc-6ad2cc835493" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/ProdutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/ProdutoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Produtos/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Produtos/Query.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorHoraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorHoraService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerTelaFuncionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerTelaFuncionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Despesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Despesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/VendaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/VendaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Vendas/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Vendas/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/ConsumoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/ConsumoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/SessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/SessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ControllerTelaFuncionario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ControllerTelaFuncionario.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +60,14 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Motel Momentus\Documents\ProjectJava\SystemHotelMomentus\src\main\resources\com\example\demo\Views" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.demo.Models.Services" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.HelloApplication" />

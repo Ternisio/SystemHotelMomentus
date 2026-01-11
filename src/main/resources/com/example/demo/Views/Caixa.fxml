@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vbox_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.ControllerCaixa">
+   <children>
+      <HBox prefHeight="57.0" prefWidth="600.0">
+         <children>
+            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Confira os pagamentos" textFill="WHITE" HBox.hgrow="SOMETIMES">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red; -fx-background-radius: 5;" HBox.hgrow="SOMETIMES">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Dinheiro" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="74.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Imagens/money.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Lbl_valorDinheiro" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0,00" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <effect>
+                  <DropShadow offsetY="5.0">
+                     <color>
+                        <Color red="0.5526315569877625" green="0.09466373920440674" blue="0.09466373920440674" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: blue; -fx-background-radius: 5;" HBox.hgrow="SOMETIMES">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Cartão" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="74.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Imagens/credit-card.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Lbl_valorCartao" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0,00" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <effect>
+                  <DropShadow offsetY="5.0">
+                     <color>
+                        <Color red="0.051169589161872864" green="0.10575048625469208" blue="0.46052631735801697" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: purple; -fx-background-radius: 5;" HBox.hgrow="SOMETIMES">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Pix" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="74.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Imagens/pix.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Lbl_valorPix" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0,00" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <effect>
+                  <DropShadow offsetY="5.0">
+                     <color>
+                        <Color red="0.44834306836128235" green="0.13645224273204803" blue="0.5263158082962036" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </HBox>
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Adicionar despesa(Opcional)" textFill="WHITE">
+         <font>
+            <Font name="Leelawadee UI Bold" size="17.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="71.0" prefWidth="600.0" spacing="5.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="SOMETIMES">
+               <children>
+                  <Label contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Nome da despesa" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Txt_despesa" alignment="CENTER" maxWidth="1.7976931348623157E308" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="SOMETIMES">
+               <children>
+                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Valor da despesa" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="valor_despesa" alignment="CENTER" maxWidth="1.7976931348623157E308" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="SOMETIMES">
+               <children>
+                  <Label contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Tipo da despesa" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="Combobox_Tipo" maxWidth="1.7976931348623157E308" prefWidth="150.0" />
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="77.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="Tabela_Despesa" prefHeight="100.0" prefWidth="484.0" HBox.hgrow="SOMETIMES">
+              <columns>
+                <TableColumn fx:id="Coluna_Nome" prefWidth="234.0" text="Nome" />
+                <TableColumn fx:id="Coluna_Valor" prefWidth="82.0" text="Valor" />
+                  <TableColumn fx:id="Coluna_Tipo" prefWidth="146.0" text="Tipo" />
+              </columns>
+            </TableView>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="153.0" spacing="5.0">
+               <children>
+                  <Button fx:id="Btn_Add_Despesa" mnemonicParsing="false" style="-fx-background-color: green;" text="Cadastrar" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Btn_Editar_Despesa" mnemonicParsing="false" style="-fx-background-color: orange;" text="Editar" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Btn_Excluir_Despesa" mnemonicParsing="false" style="-fx-background-color: red;" text="Excluir" textFill="WHITE">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: red;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

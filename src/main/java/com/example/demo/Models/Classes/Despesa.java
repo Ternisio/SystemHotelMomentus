@@ -44,8 +44,8 @@ public class Despesa {
         return Valor_Formatado;
     }
 
-    public void setValor_Formatado(String valor_Formatado) {
-        Valor_Formatado = valor_Formatado;
+    public void setValor_Formatado(double valor_Formatado) {
+        Valor_Formatado = String.format("%.2f",valor_Formatado) ;
     }
 
     public void setTipo_Despesa(String tipo_Despesa) {

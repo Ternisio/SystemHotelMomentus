@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -295,7 +296,14 @@ CarregarTabela(vendas);
         ListaConsumo.clear();
         controllerTelaFuncionario.Tabela_Consumo_venda.setItems(ListaConsumo);
     }
+public ObservableList<Vendas> ListarVendas(){
+    LocalDate Data_inicial = LocalDate.now().minusDays(1);
+    LocalDate Data_final = LocalDate.now();
 
+    LocalDateTime Data_inicial_formatada = LocalDateTime.parse(Data_inicial.toString()+"T"+config.getPernoite_fim());
+    LocalDateTime Data_final_formatada = LocalDateTime.parse(Data_final.toString()+"T"+config.getPernoite_inicio());
+        return vendaDao.ListaDevendadehoje(Data_inicial_formatada,Data_final_formatada);
+}
     @Override
     public void excluir_consumo(String Id_produto, String Nome, int qtd) {
 

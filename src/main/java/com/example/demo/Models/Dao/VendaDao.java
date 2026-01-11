@@ -103,7 +103,37 @@ public class VendaDao {
 
 
     }
+public ObservableList ListaDevendadehoje(LocalDateTime Data_inicio, LocalDateTime Data_Fim)  {
+    ObservableList<Vendas> lista = FXCollections.observableArrayList();
 
+
+    String query = queryG.ListarVendas.formatted(Data_inicio,Data_Fim);
+
+// Remove quebras de linha para caber no JSON
+    String compactQuery = query.replace("\n", " ").replace("\r", " ");
+
+    String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
+    HttpClient client = HttpClient.newHttpClient();
+
+    try {
+        HttpResponse<String> response = globalApi.Api(client,json);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode root = objectMapper.readTree(response.body()).get("data").get("TodosVendas");
+        for(JsonNode res:root){
+            Vendas v = new Vendas();
+            v.setCod_venda(res.get("IdVendas").asText());
+            v.setTotal(res.get("valorTotal").asDouble());
+            v.setPagamento(res.get("Forma_Pagamento").asText());
+            lista.add(v);
+
+        }
+    }
+    catch (Exception e) {
+        // TODO: handle exception
+
+    }
+return lista;
+}
     public Double Por_data_personalizadas_Inicial_fun(String Ano_Inicial, String Mes_Inicial,String Dia_Inicial, String mesP,String anoP,String Nome_fun)  {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -362,6 +392,7 @@ public class VendaDao {
 
         return lista;
     }
+
     public ObservableList ListaDevendadehoje(LocalDate Data_inicio, LocalDate Data_Fim)  {
         PreparedStatement ps = null;
         ResultSet rs = null;
