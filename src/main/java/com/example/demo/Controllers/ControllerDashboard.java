@@ -524,6 +524,7 @@ Relatorio relatorio = new Relatorio();
 
     void CarregarComboboxTodas() {
         Combox_Estado_quarto.setItems(FXCollections.observableArrayList("Selecione o estado", "Disponível", "Ocupado", "Sujo", "Manutenção"));
+
         Combox_Estado_quarto.setValue("Selecione o estado");
         Combobox_tipo_produto.setItems(FXCollections.observableArrayList("Selecione o tipo", "Bebidas", "Diversos", "Itens", "Pratos",
                 "Produtos eroticos"));

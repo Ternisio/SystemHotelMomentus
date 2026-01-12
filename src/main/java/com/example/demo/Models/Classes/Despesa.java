@@ -1,11 +1,12 @@
 package com.example.demo.Models.Classes;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class Despesa {
+public class Despesa implements Serializable {
     private String Codigo_Despesa,Data_despesa_formatado, Tipo_Despesa, Nome_Despesa,Valor_Formatado;
     private LocalDate data_despesa;
     private double valor;

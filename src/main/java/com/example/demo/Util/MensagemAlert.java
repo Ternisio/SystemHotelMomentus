@@ -12,7 +12,7 @@ public class MensagemAlert {
     }
     public void MensagemError(String Mensagem){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Sucesso");
+        alert.setTitle("Erro");
         alert.setHeaderText("Mensagem:");
         alert.setContentText(Mensagem);
         alert.showAndWait();

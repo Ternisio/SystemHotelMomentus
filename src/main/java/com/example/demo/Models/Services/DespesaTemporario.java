@@ -9,21 +9,30 @@ import javafx.collections.FXCollections;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DespesaTemporario {
-
+MensagemAlert alertM = new MensagemAlert();
     private static final String FILE =
             System.getProperty("user.home") + "/.meuapp/DespesaTemporario.dat";
 
-    public static void salvar(List<Despesa> despesas) throws IOException {
-        Files.createDirectories(Path.of(FILE).getParent());
+    public  boolean salvar(ObservableList<Despesa> despesas) throws IOException {
 
+        if(!Files.exists(Path.of(FILE))) {
+            Files.createDirectories(Path.of(FILE).getParent());
+        }
         try (ObjectOutputStream oos =
-                     new ObjectOutputStream(new FileOutputStream(FILE))) {
+                     new ObjectOutputStream(Files.newOutputStream(Path.of(FILE), StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING))) {
 
-            oos.writeObject(despesas);
+            for (Despesa despesa : despesas){
+                oos.writeObject(despesa);
+            }
+            return true;
+        }catch (Exception e){
+            alertM.MensagemError(e.getMessage());
+            return false;
         }
     }
 
@@ -36,6 +45,7 @@ public class DespesaTemporario {
                      new ObjectInputStream(Files.newInputStream(Path.of(FILE)))) {
             while (true) {
                 try {
+
                 despesas.add((Despesa) ois.readObject());
                 } catch (EOFException e) {
                     break;

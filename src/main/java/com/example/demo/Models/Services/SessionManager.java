@@ -22,6 +22,7 @@ public class SessionManager {
     }
 
     public static LoginResponse carregar() {
+        System.out.println(FILE);
         try (ObjectInputStream ois =
                      new ObjectInputStream(new FileInputStream(FILE))) {
 

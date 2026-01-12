@@ -391,7 +391,7 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
         }
         ;
     }
-@FXML
+
 public void aovoltarLogin(){
     SessionManager.limpar();
     funcionarioVendai.pararThread();

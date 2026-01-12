@@ -146,7 +146,7 @@
                         <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Txt_despesa" alignment="CENTER" maxWidth="1.7976931348623157E308" />
+                  <TextField fx:id="Txt_Despesa" alignment="CENTER" maxWidth="1.7976931348623157E308" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="SOMETIMES">
@@ -179,7 +179,7 @@
       </HBox>
       <HBox prefHeight="77.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="Tabela_Despesa" prefHeight="100.0" prefWidth="484.0" HBox.hgrow="SOMETIMES">
+            <TableView fx:id="Tabela_Despesa" onKeyReleased="#Selecionou_Tabela" onMouseClicked="#Selecionou_Tabela" prefHeight="100.0" prefWidth="484.0" HBox.hgrow="SOMETIMES">
               <columns>
                 <TableColumn fx:id="Coluna_Nome" prefWidth="234.0" text="Nome" />
                 <TableColumn fx:id="Coluna_Valor" prefWidth="82.0" text="Valor" />
@@ -188,17 +188,17 @@
             </TableView>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="153.0" spacing="5.0">
                <children>
-                  <Button fx:id="Btn_Add_Despesa" mnemonicParsing="false" style="-fx-background-color: green;" text="Cadastrar" textFill="WHITE">
+                  <Button fx:id="Btn_Add_Despesa" mnemonicParsing="false" onAction="#Adicionar" style="-fx-background-color: green;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="Leelawadee UI Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="Btn_Editar_Despesa" mnemonicParsing="false" style="-fx-background-color: orange;" text="Editar" textFill="WHITE">
+                  <Button fx:id="Btn_Editar_Despesa" mnemonicParsing="false" onAction="#Editar" style="-fx-background-color: orange;" text="Editar" textFill="WHITE">
                      <font>
                         <Font name="Leelawadee UI Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="Btn_Excluir_Despesa" mnemonicParsing="false" style="-fx-background-color: red;" text="Excluir" textFill="WHITE">
+                  <Button fx:id="Btn_Excluir_Despesa" mnemonicParsing="false" onAction="#Excluir" style="-fx-background-color: red;" text="Excluir" textFill="WHITE">
                      <font>
                         <Font name="Leelawadee UI Bold" size="13.0" />
                      </font>
