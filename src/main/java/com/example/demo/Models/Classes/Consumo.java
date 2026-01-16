@@ -8,10 +8,20 @@ import java.io.Serializable;
 public class Consumo extends Produto  {
     int idConsumo;
     int Qtd;
+    private Vendas vendas;
     String num_Quarto;
     public Consumo() {
 }
-public Consumo(int idConsumo,String idProduto, String Nome_prod,String ExibirValor, int Qtd){
+
+    public Vendas getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(Vendas vendas) {
+        this.vendas = vendas;
+    }
+
+    public Consumo(int idConsumo, String idProduto, String Nome_prod, String ExibirValor, int Qtd){
 super(idProduto,Nome_prod,ExibirValor);
 this.idConsumo=idConsumo;
 this.Qtd =Qtd;

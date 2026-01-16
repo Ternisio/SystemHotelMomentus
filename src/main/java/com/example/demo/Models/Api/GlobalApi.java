@@ -26,4 +26,20 @@ public class GlobalApi {
         }
     }
 
+    public static HttpResponse<String> ApiS(HttpClient client, String json){
+        Dotenv dotenv = Dotenv.load();
+        String Url_Api = dotenv.get("API_URL");
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(Url_Api))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

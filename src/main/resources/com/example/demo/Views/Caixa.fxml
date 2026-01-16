@@ -209,7 +209,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: red;" text="Sair" textFill="WHITE">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#Sair" style="-fx-background-color: red;" text="Sair" textFill="WHITE">
                <font>
                   <Font name="Leelawadee UI Bold" size="13.0" />
                </font>

@@ -5,6 +5,8 @@ import com.example.demo.Models.Classes.*;
 import com.example.demo.Models.Database.Conexao;
 import com.example.demo.Models.Graphqls.Vendas.Mutation;
 import com.example.demo.Models.Graphqls.Vendas.Query;
+import com.example.demo.Util.JsonEscape;
+import com.example.demo.Util.MensagemAlert;
 import com.example.demo.Util.MensagemVenda;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,22 +25,23 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VendaDao {
-
+MensagemAlert alert = new MensagemAlert();
     Query queryG = new Query();
     GlobalApi globalApi  = new GlobalApi();
     Funcionario funcionari =  new Funcionario();
     Mutation mutationG = new Mutation();
     MensagemVenda mensagemVenda = new MensagemVenda();
-    public String CodigodoVenda() {
-        String cod = "";
+    public String CodigodaVenda() {
+        String cod = null;
         String json = """
     {
       "query": "query { NumeroProximoLivre }"
     }
     """;
-
         HttpClient client = HttpClient.newHttpClient();
         try {
 
@@ -49,13 +52,14 @@ public class VendaDao {
 
             JsonNode dataNode = root.path("data").path("NumeroProximoLivre");
             if (!dataNode.isMissingNode()) {
-                cod = dataNode.asText();
-                System.out.println("Código da venda: " + cod);
+                cod = "V" + dataNode.asText();
+                return cod;
+
             } else {
                 System.out.println("Resposta inesperada: " + response.body());
             }
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
         return cod;
     }
@@ -103,7 +107,7 @@ public class VendaDao {
 
 
     }
-public ObservableList ListaDevendadehoje(LocalDateTime Data_inicio, LocalDateTime Data_Fim)  {
+public ObservableList ListaDevendadehojeL(LocalDateTime Data_inicio, LocalDateTime Data_Fim)  {
     ObservableList<Vendas> lista = FXCollections.observableArrayList();
 
 
@@ -121,16 +125,35 @@ public ObservableList ListaDevendadehoje(LocalDateTime Data_inicio, LocalDateTim
         JsonNode root = objectMapper.readTree(response.body()).get("data").get("TodosVendas");
         for(JsonNode res:root){
             Vendas v = new Vendas();
+    Quarto quartoG = new Quarto();
             v.setCod_venda(res.get("IdVendas").asText());
+            LocalDateTime inicio = LocalDateTime.parse(res.get("dataEntrada").asText());
+            LocalDateTime fim = null;
+            if (res.hasNonNull("dataSaida")) {
+                try {
+                    fim = LocalDateTime.parse(res.get("dataSaida").asText());
+                } catch (Exception e) {
+                    System.out.println("Erro ao converter dataSaida: " + res.get("dataSaida").asText());
+                }
+            }
+
+            funcionari.setId_Fun(res.get("Funcionario").get("Id_Funcionarios").asText());
+            quartoG.setCod_Quarto(res.get("Quarto").get("IdQuarto").asInt());
+            quartoG.setNum_quarto(res.get("Quarto").get("Num").asText());
+            v.setStatus(res.get("Status").asText());
             v.setTotal(res.get("valorTotal").asDouble());
             v.setPagamento(res.get("Forma_Pagamento").asText());
+            funcionari.setNome_Fun(res.get("Funcionario").get("Nome_Fun").asText());
+            v.setQuarto(quartoG);
+            v.setFuncionario(funcionari);
+            v.setData_hora_Entrada(inicio);
+            v.setData_hora_Saida(fim);
             lista.add(v);
-
         }
     }
     catch (Exception e) {
         // TODO: handle exception
-
+e.printStackTrace();
     }
 return lista;
 }
@@ -490,7 +513,7 @@ return lista;
 
 
     }
-    public void cadastrar( Vendas vendas) {
+    public boolean cadastrar( Vendas vendas) {
         String DataEntrada = "";
         DataEntrada = DataEntrada + vendas.getData_hora_Entrada();
         String DataSaida = "";
@@ -498,24 +521,42 @@ return lista;
                  DataSaida = "" + vendas.getData_hora_Saida();
         }
 
-        String query = mutationG.Vendas_Cadastrar.formatted(vendas.getCod_venda(),vendas.getFuncionario().getId_Fun(),vendas.getQuarto().getCod_Quarto(),DataEntrada,DataSaida,vendas.getStatus(),vendas.getTotal(),vendas.getPagamento());
 
+
+        String query = mutationG.Vendas_Cadastrar;
+        Map<String, Object> item = new HashMap<>();
+        item.put("idVenda", vendas.getCod_venda());
+        item.put("idFun", vendas.getFuncionario().getId_Fun());
+        item.put("idQuarto", String.valueOf(vendas.getQuarto().getCod_Quarto()));
+        item.put("Data_Inicio", DataEntrada);
+        item.put("Data_fim", DataSaida);
+        item.put("Status", vendas.getStatus());
+        item.put("Total",vendas.getTotal() );
+        item.put("Pagamento", vendas.getPagamento());
+        Map<String,Object> variables = new HashMap<>();
+        variables.put("list", item);
+        Map<String,Object> body = new HashMap<>();
+        body.put("query", query);
+        body.put("variables",variables);
+String json = JsonEscape.jsonEscape(body);
 // Remove quebras de linha para caber no JSON
-        String compactQuery = query.replace("\n", " ").replace("\r", " ");
-
-        String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
         HttpClient client = HttpClient.newHttpClient();
-
+        boolean Foi = false;
         try {
             HttpResponse<String> response = globalApi.Api(client,json);
-
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("AtualizarVenda");
+            Foi = data.asBoolean();
             mensagemVenda.Mensagem(vendas.getStatus());
 
         }
         catch (Exception e) {
             // TODO: handle exception
+            Foi = false;
             e.printStackTrace();
+
         }
+        return Foi;
 
     }
     public void Editarq(String Num, String status) {

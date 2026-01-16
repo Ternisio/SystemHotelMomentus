@@ -9,6 +9,7 @@ import com.example.demo.Models.Interfaces.FuncionarioVendaInterface;
 import com.example.demo.Models.Interfaces.LoginInterface;
 import com.example.demo.Models.Services.LoginService;
 import com.example.demo.Models.Services.SessionManager;
+import com.example.demo.Models.Services.VendasFinalizadoTemporario;
 import com.example.demo.Util.MaskFieldUtil;
 import io.github.gleidson28.GNAvatarView;
 import javafx.application.Platform;
@@ -81,8 +82,7 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
     @FXML
     private Button btn_Editar_consumo;
 
-    @FXML
-    private Button btn_Excluir_consumo;
+
     @FXML
     private GridPane Grid;
     @FXML
@@ -394,6 +394,7 @@ public class ControllerTelaFuncionario extends MaskFieldUtil implements Initiali
 
 public void aovoltarLogin(){
     SessionManager.limpar();
+    VendasFinalizadoTemporario.limpar();
     funcionarioVendai.pararThread();
     stage = (Stage) anchorPane.getScene().getWindow();
     stage.close();
@@ -420,7 +421,7 @@ public void aovoltarLogin(){
         Object[] opcoes = {"Sim", "Não"};
         int resultDialog = JOptionPane.showOptionDialog(null, "Você deseja fechar o caixa ?", "Pergunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
         if (resultDialog == JOptionPane.YES_OPTION) {
-        ObservableList<Vendas> vendas = funcionarioVendai.ListarVendas();
+        ObservableList<Vendas> vendas = VendasFinalizadoTemporario.carregar();
         double totalPorDinheiro = vendas.stream().filter(venda -> venda.getPagamento().equals("Dinheiro")).mapToDouble(Vendas::getTotal).sum();
         double totalPorCartao = vendas.stream().filter(venda -> venda.getPagamento().equals("Cartão")).mapToDouble(Vendas::getTotal).sum();
         double totalPorPix = vendas.stream().filter(venda -> venda.getPagamento().equals("Pix")).mapToDouble(Vendas::getTotal).sum();

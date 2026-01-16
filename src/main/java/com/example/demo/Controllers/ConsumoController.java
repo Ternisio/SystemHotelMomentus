@@ -121,13 +121,10 @@ private FuncionarioVendaInterface funcionarioVendaInterface;
         this.funcionarioVendaInterface = funcionarioVendaInterface;
     }
     void sele_tab(){
-        int index = Tabela_consumo.getSelectionModel().getSelectedIndex();
-        if (index < -1 || Tabela_consumo.getSelectionModel().isEmpty()) {
+        produto = Tabela_consumo.getSelectionModel().getSelectedItem();
+        if (produto == null) {
 
         } else {
-            produto.setIdProduto(coluna_Cod_Produto.getCellData(index));
-            produto.setEstoques(coluna_QTS_Produto.getCellData(index));
-            produto.setFoto(coluna_foto_Produto.getCellData(index));
 
             if (produto.getFoto() != null) {
                     Image imagem = new Image(produto.getFoto());
@@ -261,7 +258,7 @@ private FuncionarioVendaInterface funcionarioVendaInterface;
 
         if (qts != 0 && produto.getIdProduto() != null && produto.getEstoques() >= qts ){
             boolean existir = funcionarioVendaInterface.VerificarExistir(produto.getIdProduto());
-            funcionarioVendaInterface.Adicionar_Consumo(produto.getIdProduto(),qts,produto.getEstoques());
+            funcionarioVendaInterface.Adicionar_Consumo(produto,qts);
             if (existir == false){
                 produto.setIdProduto(null);
                 Txt_qts.setText("0");

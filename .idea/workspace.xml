@@ -5,18 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0894e5b-50bc-482c-88dc-6ad2cc835493" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/QuartoTemporario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Util/JsonEscape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/BtnBotoesQuartos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/BtnBotoesQuartos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ConsumoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ConsumoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerCaixa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerCaixa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerDashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerTelaFuncionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerTelaFuncionario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Despesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Despesa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/DespesaTemporario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/DespesaTemporario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/SessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/SessionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Util/MensagemAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Util/MensagemAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Api/GlobalApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Api/GlobalApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Consumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Classes/Consumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/ConsumoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/ConsumoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/DespesaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/DespesaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/VendaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Dao/VendaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Vendas/Mutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Vendas/Mutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Vendas/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Graphqls/Vendas/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Interfaces/MeuClick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Interfaces/MeuClick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorHoraService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorHoraServiceEditar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorHoraServiceEditar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorPernoiteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorPernoiteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/CalcularPorPernoiteServiceEditar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/ConsumoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/ConsumoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/Views/Caixa.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/Views/Caixa.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ControllerDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ControllerDashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/BtnBotoesQuartos.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/BtnBotoesQuartos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ConsumoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ConsumoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ControllerTelaFuncionario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controllers/ControllerTelaFuncionario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Classes/Despesa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Classes/Despesa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Classes/Consumo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Classes/Consumo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/ConsumoDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/ConsumoDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/DespesaDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/DespesaDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/VendaDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Dao/VendaDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Interfaces/FuncionarioVendaInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Interfaces/MeuClick.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Interfaces/MeuClick.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/CalcularPorHoraService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/CalcularPorHoraServiceEditar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/CalcularPorHoraServiceEditar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/CalcularPorPernoiteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/CalcularPorPernoiteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/CalcularPorPernoiteServiceEditar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/ConsumoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/ConsumoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/FunQuatoVendaService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/FunQuatoVendaService$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/FunQuatoVendaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Models/Services/FunQuatoVendaService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,10 +84,12 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Motel Momentus/Documents/ProjectJava/SystemHotelMomentus&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -68,6 +97,7 @@
       <recent name="C:\Users\Motel Momentus\Documents\ProjectJava\SystemHotelMomentus\src\main\resources\com\example\demo\Views" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.demo.Models.SincronizarAsync" />
       <recent name="com.example.demo.Models.Services" />
     </key>
   </component>
@@ -111,6 +141,26 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerLogin.java</url>
           <line>135</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java</url>
+          <line>443</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/FunQuatoVendaService.java</url>
+          <line>437</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/Models/Services/VendasFinalizadoTemporario.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/Controllers/ControllerTelaFuncionario.java</url>
+          <line>252</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

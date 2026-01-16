@@ -1,6 +1,5 @@
 package com.example.demo.Models.Services;
 
-import com.example.demo.Controllers.BtnBotoesQuartos;
 import com.example.demo.Controllers.ControllerEditar_venda;
 import com.example.demo.Controllers.ControllerTelaFuncionario;
 import com.example.demo.Models.Classes.*;
@@ -10,21 +9,16 @@ import com.example.demo.Models.Interfaces.FuncionarioVendaInterface;
 import com.example.demo.Models.Interfaces.MeuClick;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class ConsumoService implements FuncionarioVendaInterface {
     VendaDao vendaDao = new VendaDao();
@@ -101,9 +95,10 @@ public class ConsumoService implements FuncionarioVendaInterface {
     }
 
     @Override
-    public void Cadastro(Vendas vendas, Quarto quarto, Funcionario funcionario) {
+    public boolean Cadastro(Vendas vendas, Quarto quarto, Funcionario funcionario) {
      //   vendaDao.cadastrar(funcionario,vendas,quarto);
 
+        return false;
     }
 
 
@@ -160,28 +155,20 @@ public double TotalConsumo(){
     public void Cancelado() {
 
     }
+    CalculadoraGeral calculadoraGeral = new CalculadoraGeral();
 
     public double total(Vendas vendas, Config config){
         double Total =0.00;
-        LocalTime tpi = LocalTime.parse(config.getPernoite_inicio());
-        LocalTime tpf = LocalTime.parse(config.getPernoite_fim());
-        LocalDateTime DataPI = LocalDateTime.of(vendas.getData_hora_Entrada().getYear(),vendas.getData_hora_Entrada().getMonth(),vendas.getData_hora_Entrada().getDayOfMonth(),tpi.getHour(),tpi.getMinute());
-        if (vendas.getData_hora_Entrada().getHour() == 0 || tpf.getHour()> vendas.getData_hora_Entrada().getHour()){
-            DataPI = DataPI.minusDays(1);
-        }
-        if (vendas.getData_hora_Entrada().isBefore(DataPI)){
-            Calcular calcular = new CalcularPorHoraServiceEditar();
-            Total = calcular.calcular(config,vendas,controllerEditar_venda.lbl_Duracao_Venda);
-        }else {
-            System.out.println("enrtrou");
-            Calcular calcular = new CalcularPorPernoiteServiceEditar();
-            Total = Total + calcular.calcular(config,vendas,controllerEditar_venda.lbl_Duracao_Venda);
-        }
         return  Total;
     }
 
     @Override
     public void Editar(FuncionarioDao funcionariodao, Funcionario funcionario, File file, TextField txt_cpf, PasswordField senha) {
+
+    }
+
+    @Override
+    public void Adicionar_Consumo(Produto produto, int qts) {
 
     }
 }

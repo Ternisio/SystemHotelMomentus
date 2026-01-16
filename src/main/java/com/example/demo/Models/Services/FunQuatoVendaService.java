@@ -6,7 +6,6 @@ import com.example.demo.Controllers.ControllerTelaFuncionario;
 import com.example.demo.Models.Classes.*;
 
 import com.example.demo.Models.Dao.*;
-import com.example.demo.Models.Database.Conexao;
 import com.example.demo.Models.Interfaces.Calcular;
 import com.example.demo.Models.Interfaces.FuncionarioVendaInterface;
 import com.example.demo.Models.Interfaces.MeuClick;
@@ -17,25 +16,25 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import org.jetbrains.annotations.NotNull;
+import org.jfree.chart.renderer.category.LineRenderer3D;
 
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FunQuatoVendaService implements FuncionarioVendaInterface {
     VendaDao vendaDao = new VendaDao();
@@ -48,6 +47,9 @@ public class FunQuatoVendaService implements FuncionarioVendaInterface {
      private Config config;
      private ConfigDao configDao;
      public boolean PareD = false;
+     ObservableList<Vendas> ListaVendasRealizando = VendasRealizandoTemporario.carregar();
+     ObservableList<Vendas> ListaVendasFinalizado = VendasFinalizadoTemporario.carregar();
+     ObservableList<Vendas> ListaVendasFinalizadoNaoSalvo = VendasFinalizadoNaoSalvoTemporario.carregar();
     ConsumoDao consumoDao = new ConsumoDao();
   private   ObservableList<Quarto> ListaQuartoUI = null;
      private ControllerTelaFuncionario controllerTelaFuncionario;
@@ -55,32 +57,66 @@ MensagemAlert alert = new MensagemAlert();
      public void pararThread(){
          PareD = true;
      }
+ConsumoTemporario consumoTemporario = new ConsumoTemporario();
      public void Lbl(ControllerTelaFuncionario controllerTelaFuncionario, Config config, ConfigDao configDao){
          this.controllerTelaFuncionario = controllerTelaFuncionario;
          this.config = config;
          this.configDao = configDao;
          configDao.ListaConfig(this.config);
+ConsumoGeral = ConsumoTemporario.carregar();
+         if(VendasRealizandoTemporario.carregar() == null || VendasRealizandoTemporario.carregar().isEmpty()){
+             LocalDateTime Inicio = LocalDateTime.now().minusDays(1);
+             LocalDateTime Fim = LocalDateTime.now();
+             ObservableList<Vendas> vendasP = vendaDao.ListaDevendadehojeL(Inicio,Fim);
+
+             ListaVendasRealizando.addAll(
+                     FXCollections.observableArrayList(
+                             vendasP.stream()
+                                     .filter(venda -> venda.getStatus().equals("Realizando")) // evita NPE
+                                     .collect(Collectors.toList())
+                     )
+             );
+             for(Vendas v : vendasP){
+                 System.out.println(v.getQuarto().getCod_Quarto());
+             }
+             if(!ListaVendasRealizando.isEmpty() || ListaVendasRealizando != null){
+                 try {
+
+                     vendasRealizandoTemporario.salvar(ListaVendasRealizando);
+                 }
+
+                 catch (Exception e){
+                     alert.MensagemError(e.getMessage());
+                 }}
+         }
+
+
      }
+     VendasFinalizadoNaoSalvoTemporario vendasFinalizadoNaoSalvoTemporario = new VendasFinalizadoNaoSalvoTemporario();
+     VendasRealizandoTemporario vendasRealizandoTemporario = new VendasRealizandoTemporario();
+     VendasFinalizadoTemporario vendasFinalizadoTemporario = new VendasFinalizadoTemporario();
  private  ObservableList<Consumo> ListaConsumo = FXCollections.observableArrayList();
-    private ObservableList<Quarto> ListaQuarto = FXCollections.observableArrayList();
+    private ObservableList<Consumo> ConsumoGeral = FXCollections.observableArrayList();
     public void atualizado(GridPane Grid,  QuartoDao quartoDao, Quarto quarto, Vendas vendas,  Funcionario funcionario){
         this.Grid = Grid;
         this.vendas = vendas;
         this.quarto = quarto;
         this.quartoDao = quartoDao;
         this.funcionario = funcionario;
-        ListaQuartoUI = quartoDao.ListaQuarto();
+        if(QuartoTemporario.carregar() == null || QuartoTemporario.carregar().isEmpty()){ ListaQuartoUI = quartoDao.ListaQuarto();} else {ListaQuartoUI = QuartoTemporario.carregar();}
         atualizar();
-        }
+
+
+    }
 
         void atualizar(){
-            ListaQuarto.clear();
+
             Grid.getChildren().clear();
-            ListaQuarto.addAll(ListaQuartoUI);
-            if (!ListaQuarto.isEmpty()) {
+
+            if (!ListaQuartoUI.isEmpty()) {
                 meuClick = new MeuClick() {
                     @Override
-                    public void onClickQuarto(Quarto quarto) {
+                    public void onClickQuarto(Quarto quarto) throws IOException {
                         SelecionouQuarto(quarto);
                     }
                 };
@@ -90,12 +126,12 @@ MensagemAlert alert = new MensagemAlert();
             int row = 0;
             try {
 
-                for (int i =  0; i < ListaQuarto.size(); i++){
+                for (int i =  0; i < ListaQuartoUI.size(); i++){
                     FXMLLoader item =  new FXMLLoader();
                     item.setLocation(getClass().getResource("/com/example/demo/Views/Btn_botoes_quartos.fxml"));
                     VBox vBox = item.load();
                     BtnBotoesQuartos btnBotoesQuartos = item.getController();
-                    btnBotoesQuartos.Botoes(ListaQuarto.get(i), meuClick);
+                    btnBotoesQuartos.Botoes(ListaQuartoUI.get(i), meuClick);
                     if(col == 4 ){
                         col = 0;
 
@@ -120,31 +156,62 @@ MensagemAlert alert = new MensagemAlert();
 
     }
 
-    public void SelecionouQuarto(Quarto quarto ){
+    public void SelecionouQuarto(Quarto quarto )  throws IOException{
         System.out.println(quarto.getCod_Quarto());
         Object[] opc = {"Sim","Não"};
         if (quarto.getEstado().equals("Disponível")){
             int resultDialog =  JOptionPane.showOptionDialog(null,"Você quer o quarto "+quarto.getNum_quarto()+" ficar em ocupado ?","Pergunta",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opc,opc[0]);
             if (resultDialog == JOptionPane.YES_OPTION){
-                quarto.setEstado("Ocupado");
                 String cod = CodVenda();
+                System.out.println(cod);
+                if(!cod.equals("Sem retorno")){
+                quarto.setEstado("Ocupado");
+
                 vendas.setCod_venda(cod);
                 vendas.setPagamento("");
                 vendas.setData_hora_Entrada(LocalDateTime.now());
                 vendas.setData_hora_Saida(null);
                 vendas.setStatus("Realizando");
                 vendas.setTotal(0.00);
-                Cadastro(vendas,quarto,funcionario);
+                Vendas venda = new Vendas();
+                venda.setCod_venda(cod);
+                venda.setQuarto(quarto);
+                venda.setFuncionario(funcionario);
+                venda.setData_hora_Entrada(LocalDateTime.now());
+                venda.setData_hora_Saida(null);
+                venda.setStatus("Realizando");
+                venda.setTotal(0.00);
+                ListaVendasRealizando.add(venda);
+                vendasRealizandoTemporario.salvar(ListaVendasRealizando);
+
+                if(Cadastro(vendas,quarto,funcionario)){
                 quartoDao.Editar(quarto);
-                AtualizarLista(quarto);
+                AtualizarLista(quarto);}else {
+                ListaVendasRealizando.remove(vendas);
+                if(Conexoes.InternetConectado()){
+                    alert.MensagemError("Erro ao servidor");
+                }else {
+                    alert.MensagemError("Você está sem internet");
+                }
+                }
+                }else {
+                    if(Conexoes.InternetConectado()){
+                        alert.MensagemError("Erro ao servidor");
+                    }else {
+                        alert.MensagemError("Você está sem internet");
+                    }
+                }
 
             }
         } else if (quarto.getEstado().equals("Ocupado")) {
             int resultDialog =  JOptionPane.showOptionDialog(null,"Você quer ver os detalhes no quarto "+quarto.getNum_quarto()+"?","Pergunta",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opc,opc[0]);
             if (resultDialog == JOptionPane.YES_OPTION){
-                vendas.setQuarto(quarto);
-            vendaDao.BuscarRealizando(vendas);
-            System.out.println(vendas.getQuarto().getNum_quarto());
+             /*   vendas.setStatus("Realizando");
+            vendas.setQuarto(quarto);
+           vendaDao.BuscarRealizando(vendas);*/
+                vendas = ListaVendasRealizando.stream().filter(v->v.getQuarto().getCod_Quarto() == quarto.getCod_Quarto()).findFirst().orElseThrow(()-> new  NoSuchElementException("Nao foi encontrado"));
+
+            System.out.println(vendas.getCod_venda()+" "+vendas.getQuarto().getNum_quarto());
         controllerTelaFuncionario.pane_Lista_do_Quarto.setDisable(true);
         controllerTelaFuncionario.pane_Detalhes_Venda.setDisable(false);
             controllerTelaFuncionario.lbl_Num_quarto.setText(quarto.getNum_quarto());
@@ -190,9 +257,12 @@ CarregarTabela(vendas);
         }
     }
     public String CodVenda() {
-
-      String  Cod_Venda = "V" + vendaDao.CodigodoVenda();
-        return Cod_Venda;
+        String Cod_Venda = vendaDao.CodigodaVenda();
+       if(Cod_Venda!=null){
+       return Cod_Venda;}
+       else {
+          return "Sem retorno";
+       }
 
 
     }
@@ -206,7 +276,7 @@ CarregarTabela(vendas);
                 "Forma de Pagamento",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
-                opcoes,
+                opcoes, 
                 opcoes[0]
         );
     System.out.println(escolha);
@@ -215,28 +285,65 @@ CarregarTabela(vendas);
         vendas.setPagamento(escolha);
         vendas.setStatus("Finalizado");
         vendas.setTotal(Double.parseDouble(controllerTelaFuncionario.lbl_Total_Venda.getText().replace(".","").replace(",",".")));
-        vendaDao.cadastrar(vendas);
-        quarto.setCod_Quarto(vendas.getQuarto().getCod_Quarto());
-        quarto.setNum_quarto(vendas.getQuarto().getNum_quarto());
-        quarto.setEstado("Sujo");
-        quartoDao.Editar(quarto);
-        AtualizarLista(quarto);
-        return true;
+        if(vendaDao.cadastrar(vendas)){;
+        int indiceRealizando = IntStream.range(0,ListaVendasRealizando.size()).filter(i-> ListaVendasRealizando.get(i).getCod_venda() == vendas.getCod_venda()).findFirst().orElseThrow(()-> new NoSuchElementException("Não foi encontrado"));
+        ListaVendasRealizando.remove(indiceRealizando);
+       vendas.getQuarto().setEstado("Sujo");
+        quartoDao.Editar(vendas.getQuarto());
+        AtualizarLista(vendas.getQuarto());
+        Vendas venda = new Vendas();
+        venda.setCod_venda(vendas.getCod_venda());
+        venda.setQuarto(vendas.getQuarto());
+            venda.setFuncionario(vendas.getFuncionario());
+            venda.setData_hora_Entrada(vendas.getData_hora_Entrada());
+            venda.setData_hora_Saida(vendas.getData_hora_Saida());
+            venda.setPagamento(vendas.getPagamento());
+            venda.setStatus(vendas.getStatus());
+            venda.setTotal(vendas.getTotal());
+            ConsumoGeral.removeIf(consumo -> consumo.getVendas().getCod_venda().equals(vendas.getCod_venda()));
+
+        ListaVendasFinalizado.add(venda);
+       try {
+           consumoTemporario.salvar(ConsumoGeral);
+           vendasRealizandoTemporario.salvar(ListaVendasRealizando);
+           vendasFinalizadoTemporario.salvar(ListaVendasFinalizado);
+       } catch (IOException e){
+           e.printStackTrace();
+
+       }
+        return true;}else{
+            int indiceRealizando = IntStream.range(0,ListaVendasRealizando.size()).filter(i-> ListaVendasRealizando.get(i).getCod_venda().equals( vendas.getCod_venda())).findFirst().orElseThrow(()-> new NoSuchElementException("Não foi encontrado"));
+            ListaVendasRealizando.remove(indiceRealizando);
+            vendas.getQuarto().setEstado("Sujo");
+            quartoDao.Editar(vendas.getQuarto());
+            AtualizarLista(vendas.getQuarto());
+            ListaVendasFinalizado.add(vendas);
+            try {
+                vendasRealizandoTemporario.salvar(ListaVendasRealizando);
+                vendasFinalizadoTemporario.salvar(ListaVendasFinalizado);
+                ListaVendasFinalizadoNaoSalvo.add(vendas);
+                vendasFinalizadoNaoSalvoTemporario.salvar(ListaVendasFinalizadoNaoSalvo);
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            return true;
+        }
 
     }else {
         return false;
     }
 
     }
-    void AtualizarLista(Quarto quarto){
-        for (int i = 0; i < ListaQuartoUI.size();i++){
-            if (ListaQuartoUI.get(i).getCod_Quarto() == quarto.getCod_Quarto()){
-                ListaQuartoUI.set(i,quarto);
-                break;
-            }
-
+    QuartoTemporario quartoTemporario = new QuartoTemporario();
+    void AtualizarLista(Quarto quartoA){
+      int indice = IntStream.range(0,ListaQuartoUI.size()).filter(i -> ListaQuartoUI.get(i).getCod_Quarto() == quartoA.getCod_Quarto()).findFirst().orElseThrow(()->new NoSuchElementException("Não foi encontrado") );
+        ListaQuartoUI.set(indice,quartoA);
+        try {
+            quartoTemporario.salvar(ListaQuartoUI);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        atualizar();
+atualizar();
 
     }
 
@@ -257,7 +364,9 @@ CarregarTabela(vendas);
 
     }
     public void CarregarTabela(Vendas vendas){
-        ListaConsumo = consumoDao.ListaConsumo(vendas);
+        ListaConsumo = ConsumoGeral.stream()
+                .filter(consumo -> vendas.getCod_venda().equals(consumo.getVendas().getCod_venda()))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
         controllerTelaFuncionario.Coluna_Cod_Produto.setCellValueFactory(new PropertyValueFactory<Consumo,String>("idProduto"));
         controllerTelaFuncionario.Coluna_Nome_Produto_venda.setCellValueFactory(new PropertyValueFactory<Consumo,String>("Nome_prod"));
         controllerTelaFuncionario.Coluna_Valor_Produto_venda.setCellValueFactory(new PropertyValueFactory<Consumo,String>("ExibirValor"));
@@ -265,9 +374,9 @@ CarregarTabela(vendas);
         controllerTelaFuncionario.Tabela_Consumo_venda.setItems(ListaConsumo);
 
     }
-    public  void Adicionar_Consumo(String Cod_Produto, int qtd, int TotalEstoques){
-        boolean Verificarexistir = VerificarExistir(Cod_Produto);
-        if (Verificarexistir){
+    public  void Adicionar_Consumo(Produto produto, int qtd) {
+        boolean Verificarexistir = VerificarExistir(produto.getIdProduto());
+        if (Verificarexistir) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
 
@@ -275,21 +384,47 @@ CarregarTabela(vendas);
             alert.setContentText("Já existe na tabela");
             alert.showAndWait();
 
-        }else {
-            int restantes = ADDcalcularEstoques(qtd,TotalEstoques);
-            consumoDao.cadastrar(vendas,Cod_Produto,qtd);
-            consumoDao.editarProduto(Cod_Produto,restantes);
-            CarregarTabela(vendas);
-            double Subtotal = total(vendas,config) + TotalConsumo();
-            controllerTelaFuncionario.lbl_Total_Venda.setText(String.format("%.2f",Subtotal));
+        } else {
+            Vendas venda = new Vendas();
+            venda.setCod_venda(vendas.getCod_venda());
+            Consumo consumo = new Consumo();
+            consumo.setIdProduto(produto.getIdProduto());
+            consumo.setNome_prod(produto.getNome_prod());
+            consumo.setValor(produto.getValor());
+            consumo.setExibirValor(produto.getExibirValor());
+            consumo.setVendas(venda);
+            consumo.setQtd(qtd);
+            ConsumoGeral.add(consumo);
+            int restantes = ADDcalcularEstoques(qtd, produto.getEstoques());
+
+            if (consumoDao.cadastrar(vendas, produto.getIdProduto(), qtd)) {
+                consumoDao.editarProduto(produto.getIdProduto(), restantes);
+                CarregarTabela(vendas);
+                double Subtotal = total(vendas, config) + TotalConsumo();
+                controllerTelaFuncionario.lbl_Total_Venda.setText(String.format("%.2f", Subtotal));
+                try {
+                    consumoTemporario.salvar(ConsumoGeral);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }else {
+                try {
+                    consumoTemporario.salvar(ConsumoGeral);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
     }
     @Override
-    public void Cadastro(Vendas vendas, Quarto quarto, Funcionario funcionario) {
+    public boolean Cadastro(Vendas vendas, Quarto quarto, Funcionario funcionario) {
         vendas.setQuarto(quarto);
         vendas.setFuncionario(funcionario);
-        vendaDao.cadastrar(vendas);
-
+        if(vendaDao.cadastrar(vendas)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void limparTabela(){
@@ -302,7 +437,7 @@ public ObservableList<Vendas> ListarVendas(){
 
     LocalDateTime Data_inicial_formatada = LocalDateTime.parse(Data_inicial.toString()+"T"+config.getPernoite_fim());
     LocalDateTime Data_final_formatada = LocalDateTime.parse(Data_final.toString()+"T"+config.getPernoite_inicio());
-        return vendaDao.ListaDevendadehoje(Data_inicial_formatada,Data_final_formatada);
+        return vendaDao.ListaDevendadehojeL(Data_inicial_formatada,Data_final_formatada);
 }
     @Override
     public void excluir_consumo(String Id_produto, String Nome, int qtd) {
@@ -330,6 +465,8 @@ consumoDao.editarProduto(Id_Produto,estoques);
      int qtd_estoques = consumoDao.Estoques( Id_produto);
      int totalEstoques = qtd_estoques + qtd ;
  consumoDao.editarProduto(Id_produto,totalEstoques);
+ ListaConsumo.removeIf(c-> c.getVendas().getCod_venda().equals(vendas.getCod_venda()) && c.getIdProduto().equals(Id_produto));
+        ConsumoGeral.removeIf(c-> c.getVendas().getCod_venda().equals(vendas.getCod_venda()) && c.getIdProduto().equals(Id_produto));
  consumoDao.Excluir(vendas,Id_produto);
 
         CarregarTabela(vendas);
@@ -338,23 +475,15 @@ consumoDao.editarProduto(Id_Produto,estoques);
         controllerTelaFuncionario.id_produto = null;
 
     }
+
+    @Override
+    public void Adicionar_Consumo(String Cod_Produto, int qtd, int TotalEstoques) {
+
+    }
+CalculadoraGeral calculadoraGeral = new CalculadoraGeral();
     public double total(Vendas vendas, Config config){
     double Total =0.00;
-
-    LocalTime tpi = LocalTime.parse(config.getPernoite_inicio());
-    LocalTime tpf = LocalTime.parse(config.getPernoite_fim());
-    LocalDateTime DataPI = LocalDateTime.of(vendas.getData_hora_Entrada().getYear(),vendas.getData_hora_Entrada().getMonth(),vendas.getData_hora_Entrada().getDayOfMonth(),tpi.getHour(),tpi.getMinute());
-   if (vendas.getData_hora_Entrada().getHour() == 0 || tpf.getHour()> vendas.getData_hora_Entrada().getHour()){
-       DataPI = DataPI.minusDays(1);
-   }
-    if (vendas.getData_hora_Entrada().isBefore(DataPI)){
-        Calcular calcular = new CalcularPorHoraService();
-         Total = calcular.calcular(config,vendas,controllerTelaFuncionario.lbl_Duracao_Venda,controllerTelaFuncionario.BotaoAcao);
-    }else {
-
-        Calcular calcular = new CalcularPorPernoiteService();
-        Total = Total + calcular.calcular(config,vendas,controllerTelaFuncionario.lbl_Duracao_Venda, controllerTelaFuncionario.BotaoAcao);
-    }
+    Total = calculadoraGeral.calcular(config,vendas,controllerTelaFuncionario.lbl_Duracao_Venda,controllerTelaFuncionario.BotaoAcao);
     return  Total;
 }
     public void Editar(FuncionarioDao funcionariodao, Funcionario funcionario, File file, TextField txt_cpf, PasswordField senha) {

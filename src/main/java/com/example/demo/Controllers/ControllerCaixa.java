@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Models.Classes.Despesa;
 import com.example.demo.Models.Services.DespesaTemporario;
+import com.example.demo.Models.SincronizarAsync.DespesaSincronizarAsync;
 import com.example.demo.Util.MaskFieldUtil;
 import com.example.demo.Util.MensagemAlert;
 import javafx.collections.ObservableList;
@@ -75,8 +76,8 @@ private VBox vbox_main;
     }
 
     @FXML
-    void Sair(MouseEvent event){
-       despesaTemporario.limpar();
+    void Sair(){
+       DespesaSincronizarAsync.sincronizarAsync(Listadespesas);
         stage = (Stage) vbox_main.getScene().getWindow();
         stage.close();
 
@@ -161,7 +162,7 @@ if(!Txt_Despesa.getText().equals("") && !valor_despesa.getText().equals("") && !
           despesa.setTipo_Despesa(Combobox_Tipo.getValue().toString());
           Listadespesas.add(despesa);
          boolean Ok = despesaTemporario.salvar(Listadespesas);
-         if(Ok){ alert.MensagemSucess("Foi salvo com sucesso"); Limpar_Campos();}
+         if(Ok){ alert.MensagemSucess("Foi salvo com sucesso"); Limpar_Campos(); Tabela_Despesa.getSelectionModel().clearSelection();}
 
       }else {
           alert.MensagemError("Preencham os todos campos");

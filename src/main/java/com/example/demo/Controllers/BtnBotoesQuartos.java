@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class BtnBotoesQuartos {
 
@@ -22,7 +23,11 @@ public class BtnBotoesQuartos {
     private Label Num_quartos;
     @FXML
     private void selecionadoquarto(MouseEvent event){
-        meuClick.onClickQuarto(quarto);
+        try {
+            meuClick.onClickQuarto(quarto);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

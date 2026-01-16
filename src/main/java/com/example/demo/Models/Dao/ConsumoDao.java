@@ -31,7 +31,7 @@ public class ConsumoDao {
     GlobalApi api = new GlobalApi();
     Mutation mutationG = new Mutation();
     MensagemAlert alert = new MensagemAlert();
-    public void cadastrar( Vendas vendas, String Cod_produto, int qtd) {
+    public boolean cadastrar( Vendas vendas, String Cod_produto, int qtd) {
     String Mutation = mutationG.Consumo_add.formatted(vendas.getCod_venda(),Cod_produto,qtd, LocalDate.now());
         String compactQuery = Mutation.replace("\n", " ").replace("\r", " ");
         String json = "{ \"query\": \"" + compactQuery.replace("\"", "\\\"") + "\" }";
@@ -40,11 +40,15 @@ public class ConsumoDao {
         try {
 
             HttpResponse<String> response = api.Api(client,json);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode data = mapper.readTree(response.body()).get("data").get("CadastrarConsumo");
+            return data.asBoolean();
 
         } catch (Exception e) {
             // TODO: handle exception
             alert.MensagemError(""+e.getMessage());
             e.printStackTrace();
+            return false;
         }
     }
     public ObservableList<Consumo> ListaConsumo(Vendas vendas){

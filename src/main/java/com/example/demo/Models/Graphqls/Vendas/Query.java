@@ -32,7 +32,14 @@ public class Query {
                      valorTotal
                      Forma_Pagamento
                      Status
-                     
+                     Quarto{
+                     IdQuarto
+                     Num
+                     }
+                     Funcionario{
+                     Id_Funcionarios
+                      Nome_Fun
+                     }
                  }
              }
 
